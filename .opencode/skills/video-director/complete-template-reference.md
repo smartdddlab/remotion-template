@@ -4,7 +4,7 @@
 # ============================================
 # Video Director Production Framework (YAML)
 # For: Professional video production with director's perspective
-# Version: 4.0 (Director's framework with comprehensive creative guidance)
+# Version: 5.0 (Pure design language, technology-agnostic)
 # ============================================
 
 video_director_framework:
@@ -178,9 +178,81 @@ video_director_framework:
           - Adjust for emotional pacing and emphasis
           - Mark key terms with **bold** for emphasis
         
-        # visual_hook: 开场画面的设计
-        # 影响后续：决定 visual_art 的开场动画效果
-        visual_hook: "Opening visual that captures attention (e.g., particle explosion, clean title card)"
+        # visual_direction: 视觉导演指导（纯设计语言）
+        # 使用通用动画词汇描述画面，不与具体技术绑定
+        visual_direction:
+          # 场景视觉定位
+          scene_visual_identity:
+            perspective_scale: "intimate/personal/environmental/cosmic"
+            scale_journey: "描述尺度变化，如'从 environmental 推进到 intimate'"
+          
+          # 构图策略
+          composition:
+            primary_rule: "rule_of_thirds/symmetry/golden_ratio/diagonal/frame_within_frame"
+            focal_point: "center/center_left/center_right/top/bottom/golden_point"
+            leading_elements: "引导视线的元素描述"
+            negative_space: "负空间运用描述"
+          
+          # 光影设计
+          lighting:
+            mood: "soft_even/warm_contrast/cool_dramatic/high_key/low_key"
+            key_light:
+              direction: "front/back/top/bottom/left/right/top_left/top_right"
+              quality: "hard/soft/diffused"
+              color_temperature: "warm/neutral/cool"
+          
+          # 色彩策略
+          color_strategy:
+            dominant_tone: "主色调描述"
+            contrast_approach: "complementary/analogous/triadic/monochromatic"
+            saturation_arc: "饱和度变化描述"
+          
+          # 景深层次
+          depth_layers:
+            foreground:
+              content: "前景内容描述"
+              blur_level: "none/slight/moderate/heavy"
+              opacity: 0.6
+            midground:
+              content: "主体内容描述"
+              emphasis: "primary/secondary"
+            background:
+              content: "背景内容描述"
+              blur_level: "none/slight/moderate/heavy"
+          
+          # 动态设计（通用动画词汇）
+          motion:
+            # 入场动画
+            entrance:
+              type: "fade_in / slide_from_left / slide_from_right / slide_from_top / slide_from_bottom / scale_up / scale_down / rotate_in"
+              duration: "0.3s / 0.5s / 0.8s"
+              easing: "linear / smooth / spring / bounce"
+            
+            # 持续动画
+            continuous:
+              type: "static / subtle_float / gentle_breathe / slow_rotate / pulse / drift"
+              speed: "slow / medium / fast"
+            
+            # 强调动画（配合文案重点）
+            emphasis:
+              - trigger: "keyword: [具体词汇]"
+                effect: "pop / scale_pulse / glow_intensify / color_shift / shake"
+                intensity: "subtle / medium / strong"
+              - trigger: "phrase: [具体短语]"
+                effect: "highlight / underline / background_glow"
+            
+            # 出场动画
+            exit:
+              type: "fade_out / slide_to_left / slide_to_right / scale_down / dissolve"
+              duration: "0.3s / 0.5s"
+              easing: "smooth / abrupt"
+          
+          # 转场设计（通用转场词汇）
+          transition:
+            type: "cut / fade / dissolve / wipe_left / wipe_right / slide / zoom_in / zoom_out / match_cut"
+            duration: "instant / quick(0.3s) / medium(0.5s) / slow(1s)"
+            visual_bridge: "视觉连接元素描述"
+            narrative_purpose: "转场的叙事目的"
         
         # emotional_tone: 决策树中的选择
         # [inspiring/calm/suspense/professional/playful]
@@ -388,7 +460,7 @@ video_director_framework:
         # emotional_mapping: 记录每种颜色对应的情感（用于审核检查）
         # progression_arc: 颜色如何在视频中演化（开场→发展→高潮→结束）
         #
-        primary_colors: "2-3 dominant colors (specify HEX codes for Remotion)"
+        primary_colors: "2-3 dominant colors (specify HEX codes)"
         secondary_colors: "Accent and highlight colors (2-3 accent colors)"
         emotional_mapping: "How colors support narrative emotions (map each color to emotion)"
         progression_arc: "Color evolution through video (e.g., dark → bright → calm → accent)"
@@ -409,11 +481,30 @@ video_director_framework:
       camera_perspective: "Viewer's point of view"
       movement_philosophy: "Camera motion style and rationale"
     
-    # ===== Animation & Motion Design =====
+    # ===== Motion Design (通用动画词汇) =====
     motion_design:
+      # 全局动画风格
       animation_style: "Motion characteristics and timing"
-      easing_strategies: "Acceleration/deceleration patterns"
-      transition_language: "Visual transition vocabulary"
+      
+      # 缓动策略（通用描述）
+      easing_vocabulary:
+        - "linear: 匀速运动，机械感"
+        - "smooth: 平滑加减速，自然感"
+        - "spring: 弹性回弹，活泼感"
+        - "bounce: 弹跳效果，趣味感"
+        - "dramatic: 强烈对比，冲击感"
+      
+      # 转场语言（通用描述）
+      transition_language:
+        - "cut: 直接切换，干净利落"
+        - "fade: 淡入淡出，柔和过渡"
+        - "dissolve: 溶解融合，时间流逝"
+        - "wipe: 擦除效果，方向感"
+        - "slide: 滑动切换，空间感"
+        - "zoom: 缩放转场，聚焦感"
+        - "match_cut: 匹配剪接，关联感"
+      
+      # 视差深度
       parallax_depth: "Layered movement for depth"
     
     # ===== Typography & Graphic Design =====
@@ -713,7 +804,7 @@ video_director_framework:
           
           - [ ] 动画流畅度
             # 检查方法：预览每个场景的动画效果
-            # 通过标准：动画流畅，转场自然，符合 easing_strategies
+            # 通过标准：动画流畅，转场自然，符合 easing_vocabulary
             # 不通过示例：动画卡顿、转场突兀、节奏混乱
           
           - [ ] 文字可读性
@@ -731,7 +822,7 @@ video_director_framework:
           1. 风格问题 → 重新选择 visual_aesthetic 或调整风格一致性
           2. 色彩问题 → 重新设计 color_palette 或调整色彩应用
           3. 构图问题 → 调整 composition 规则或重新布局
-          4. 动画问题 → 调整 animation_style 或 easing_strategies
+          4. 动画问题 → 调整 animation_style 或 easing_vocabulary
           5. 文字问题 → 调整 typography 或字体系统
           6. 最多 3 次迭代
       
@@ -777,18 +868,6 @@ video_director_framework:
           4. 目标问题 → 返回修改 creative_vision 或关键场景
           5. 播放问题 → 调整输出格式或检查编码设置
           6. 最多 2 次迭代（最终阶段应快速修复）
-        criteria: "Voice performance, sound design, mixing"
-        approval_signoff: "Required before visual production"
-      
-      visual_approval:
-        reviewer: "Director + Art Director"
-        criteria: "Visual style, composition, animation"
-        approval_signoff: "Required before post-production"
-      
-      final_approval:
-        reviewer: "Director + Executive Producer"
-        criteria: "Overall quality, objective achievement"
-        approval_signoff: "Required before distribution"
     
     # ===== Change Management =====
     change_management:
@@ -804,6 +883,72 @@ video_director_framework:
       style_guide: "Reference for future productions"
       post_mortem: "Lessons learned and improvements"
 
+# ============================================
+# Appendix: Universal Animation Vocabulary
+# ============================================
+# 
+# 通用动画词汇表（技术无关）
+# 实现者根据这些描述选择合适的技术方案
+#
+# ----- 入场动画 (Entrance) -----
+# fade_in: 透明度从0到1
+# slide_from_left/right/top/bottom: 从指定方向滑入
+# scale_up: 从0放大到1
+# scale_down: 从大于1缩小到1
+# rotate_in: 旋转进入
+# typewriter: 逐字显示
+#
+# ----- 持续动画 (Continuous) -----
+# static: 静止不动
+# subtle_float: 轻微上下浮动
+# gentle_breathe: 轻微缩放呼吸效果
+# slow_rotate: 缓慢旋转
+# pulse: 透明度或缩放脉动
+# drift: 缓慢漂移
+#
+# ----- 强调动画 (Emphasis) -----
+# pop: 弹性放大后回弹
+# scale_pulse: 缩放脉动
+# glow_intensify: 发光增强
+# color_shift: 颜色变化
+# shake: 轻微震动
+# highlight: 高亮显示
+# underline: 下划线出现
+# background_glow: 背景发光
+#
+# ----- 出场动画 (Exit) -----
+# fade_out: 透明度从1到0
+# slide_to_left/right/top/bottom: 滑向指定方向
+# scale_down: 缩小消失
+# dissolve: 溶解消失
+#
+# ----- 转场动画 (Transition) -----
+# cut: 直接切换
+# fade: 淡入淡出
+# dissolve: 交叉溶解
+# wipe_left/right/top/bottom: 擦除效果
+# slide: 滑动切换
+# zoom_in/out: 缩放转场
+# match_cut: 匹配剪接
+#
+# ----- 缓动描述 (Easing) -----
+# linear: 匀速
+# smooth: 平滑加减速
+# spring: 弹性
+# bounce: 弹跳
+# dramatic: 强烈对比
+#
+# ----- 强度描述 (Intensity) -----
+# subtle: 微妙/轻微
+# medium: 中等
+# strong: 强烈
+#
+# ----- 速度描述 (Speed) -----
+# slow: 慢速 (0.8s+)
+# medium: 中速 (0.3-0.8s)
+# fast: 快速 (<0.3s)
+# instant: 瞬间
+#
 # ============================================
 # Director's Usage Instructions:
 # 1. Fill in each section with specific creative and technical decisions

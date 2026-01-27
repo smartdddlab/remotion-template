@@ -1,196 +1,376 @@
 
-以下展示如何使用导演决策框架填充完整 YAML 的实际案例。
+### Example 3: Educational Science Video - Popping Candy (跳跳糖科普视频)
 
-### Example 1: Educational Science Video (科普视频)
-
-**视频类型**：educational（科普量子力学）  
-**情感基调**：inspiring（激发好奇心）  
-**目标时长**：90 秒（medium）  
-**目标受众**：general（大众，无先验知识）
+**视频类型**：educational（科普物理现象）  
+**情感基调**：playful → inspiring（活泼到启发）  
+**目标时长**：35 秒（short）  
+**目标受众**：general（大众，特别是儿童和青少年）
 
 ```yaml
 video_director_framework:
   director_vision:
     creative_vision: |
-      核心信息：通过量子力学的奇异现象，激发观众对微观世界的好奇心。
-      情感旅程：好奇（开场）→ 震撼（量子纠缠）→ 启发（薛定谔的猫）→ 探索（总结）。
-      风格定位：cinematic with particle effects（电影感 + 粒子特效，营造震撼感）。
-      关键隐喻：量子纠缠用发光的连接线，薛定谔的猫用半透明叠加。
+      核心信息：揭示跳跳糖"噼里啪啦"背后的物理原理，将日常零食变成科学探索的入口。
+      情感旅程：好奇（提出问题）→ 探索（揭示原理）→ 理解（展示过程）→ 惊喜（总结升华）。
+      风格定位：playful scientific visualization（活泼的科学可视化），用微观视角展现宏观现象。
+      关键隐喻：糖晶像微型"气体监狱"，二氧化碳释放像"越狱表演"，口腔是"共鸣剧场"。
     
     target_audience:
-      demographics: "general（大众受众，18-35岁，无物理背景）"
-      viewing_context: "desktop/mobile（YouTube、B站）"
-      prior_knowledge: "minimal（无量子力学先验知识）"
-      emotional_needs: "curiosity, awe, inspiration（好奇、震撼、启发）"
+      demographics: "general（大众受众，8-35岁，无物理背景）"
+      viewing_context: "mobile/desktop（社交媒体、教育平台）"
+      prior_knowledge: "minimal（无气体物理先验知识）"
+      emotional_needs: "curiosity, wonder, understanding（好奇、惊奇、理解）"
     
     success_metrics:
-      engagement_goals: "watch_time > 70%, completion_rate > 80%（完整观看率）"
-      learning_outcomes: "理解量子纠缠基本概念、了解薛定谔的猫思想实验"
+      engagement_goals: "watch_time > 80%, completion_rate > 85%, shares > 10%"
+      learning_outcomes: "理解跳跳糖发声原理、了解高压气体释放过程、认识口腔共鸣作用"
       brand_objectives: "N/A"
-      artistic_aspirations: "电影级视觉质量，粒子特效震撼感"
+      artistic_aspirations: "生动有趣的科学可视化，将抽象物理概念具象化"
   
   scriptwriting:
     narrative_structure:
-      story_arc: "three_act（问题引入→概念解释→实际应用）"
-      pacing_strategy: "moderate with emphasis at key moments（适中节奏，关键时刻强调）"
-      key_moments: "1. 量子纠缠现象（震撼） 2. 薛定谔的猫（启发） 3. 实际应用（探索）"
-      call_to_action: "N/A（科普视频无行动呼吁）"
+      story_arc: "three_act（问题引入→原理解释→过程展示→总结升华）"
+      pacing_strategy: "playful with building excitement（活泼开场，逐步升级兴奋感）"
+      key_moments: "1. 提出问题（好奇） 2. 揭示原理（探索） 3. 展示释放过程（震撼） 4. 总结升华（启发）"
+      call_to_action: "N/A"
     
     scenes:
       - scene_number: 1
-        timecode: "0:00 - 0:15 (15秒，约57字）"
-        scene_objective: "引入量子纠缠现象，制造悬念"
-        narrative_function: "setup（铺垫问题）"
+        timecode: "0:00 - 0:05 (5秒，约19字）"
+        scene_objective: "建立好奇心，提出问题"
+        narrative_function: "setup"
         key_dialogue: |
-          量子纠缠是物理学家**最震惊**的发现之一。（10字）
-          两个粒子无论相距多远，都能**瞬间**相互影响。（13字）
-          这似乎违反了**相对论**的光速限制。（11字）
-          # 总计34字，语速2.27字/秒（太慢，需调整）
-          
-          调整后：
-          量子纠缠是物理学家最震惊的发现之一。
-          两个粒子无论相距多远，都能瞬间相互影响。
-          这似乎违反了相对论的光速限制。
-          总计54字，54/15 = 3.6字/秒 ✓
+          零食跳跳糖放入嘴里，为什么会发出**噼里啪啦**的声音？
         
-        visual_hook: "深蓝背景，两个发光的量子粒子突然出现，用发光线连接"
-        emotional_tone: "suspense（悬疑，制造期待）"
-        transition_logic: "dissolve（渐变融合，进入下一个概念）"
+        visual_direction:
+          scene_visual_identity:
+            perspective_scale: "intimate"
+            scale_journey: "亲密尺度，糖晶特写"
+          composition_strategy:
+            primary_rule: "center_focus"
+            focal_point: "center"
+            leading_elements: "糖晶居中，吸引视线"
+            negative_space: "最小化负空间，营造亲密感"
+          lighting_design:
+            lighting_mood: "warm_contrast"
+            key_light:
+              direction: "front"
+              quality: "soft"
+              color_temperature: "warm"
+          color_strategy:
+            dominant_tone: "warm_golden"
+            contrast_approach: "complementary"
+            saturation_arc: "高饱和开场，吸引注意力"
+          depth_layers:
+            foreground:
+              content: "糖晶颗粒"
+              blur_level: "none"
+              opacity: 1.0
+            midground:
+              content: "糖晶主体"
+              emphasis: "primary"
+            background:
+              content: "温暖渐变"
+              blur_level: "moderate"
+              opacity: 0.7
+          motion_design:
+            entrance:
+              style: "scale_up"
+              quality: "spring"
+              duration_feeling: "quick"
+            continuous_motion:
+              type: "subtle_float"
+            emphasis_moments:
+              - trigger: "噼里啪啦"
+                effect: "gentle_pulse"
+            exit:
+              style: "dissolve"
+              quality: "smooth"
+          transition_design:
+            type: "dissolve"
+            timing: "leisurely"
+            visual_bridge: "温暖色调延续"
+            narrative_purpose: "从问题过渡到原理解释"
+        
+        emotional_tone: "playful"
+        transition_logic: "dissolve"
       
       - scene_number: 2
-        timecode: "0:15 - 0:60 (45秒，约171字）"
-        scene_objective: "解释薛定谔的猫思想实验"
-        narrative_function: "development（发展概念）"
+        timecode: "0:05 - 0:15 (10秒，约38字）"
+        scene_objective: "揭示核心原理"
+        narrative_function: "development"
         key_dialogue: |
-          奥地利物理学家薛定谔在1935年提出思想实验。
-          他设想一只猫处于**叠加态**，既死又活。
-          这揭示了量子力学的**奇异本质**。
-          # 总计48字，48/45 = 1.07字/秒（太快）
-          
-          调整后（增加细节）：
-          奥地利物理学家薛定谔在1935年提出了一个著名的思想实验。
-          他设想一只猫处于叠加态，既死又活，直到观察为止。
-          这揭示了量子力学的奇异本质，挑战了我们的常识。
-          总计75字，75/45 = 1.67字/秒（仍快，继续调整）
-          
-          最终调整（适中语速）：
-          薛定谔在1935年提出了一个著名的思想实验。
-          他设想一只猫处于叠加态，既死又活，直到观察为止。
-          这揭示了量子力学的奇异本质，挑战了我们的常识理解。
-          总计67字，67/45 = 1.49字/秒（依然快）
-          
-          # 注意：实际AI生成时会自动控制speed=1.0，字数会自然调整
-          # 此处仅展示计算逻辑
+          答案藏在跳跳糖的制作过程里。普通糖果只是糖浆冷却，而跳跳糖在高温糖浆中被注入大量**二氧化碳气体**，然后快速冷却，把这些气体封存在糖晶内部的**微型气泡**里。
         
-        visual_hook: "箱子出现，猫的半透明图像叠加（活猫+死猫）"
-        emotional_tone: "inspiring（启发，激发思考）"
-        transition_logic: "fade（淡出，进入总结）"
+        visual_direction:
+          scene_visual_identity:
+            perspective_scale: "environmental"
+            scale_journey: "从 environmental 推进到 intimate，展示制作过程到微观结构"
+          composition_strategy:
+            primary_rule: "rule_of_thirds"
+            focal_point: "center_right"
+            leading_elements: "制作流程从左向右引导到微观结构"
+            negative_space: "左侧留白展示流程图"
+          lighting_design:
+            lighting_mood: "soft_even"
+            key_light:
+              direction: "top"
+              quality: "diffused"
+              color_temperature: "neutral"
+          color_strategy:
+            dominant_tone: "cool_blue"
+            contrast_approach: "analogous"
+            saturation_arc: "中等饱和，营造科学感"
+          depth_layers:
+            foreground:
+              content: "制作流程图标"
+              blur_level: "slight"
+              opacity: 0.8
+            midground:
+              content: "糖晶微观结构示意图"
+              emphasis: "primary"
+            background:
+              content: "柔和渐变"
+              blur_level: "moderate"
+              opacity: 0.6
+          motion_design:
+            entrance:
+              style: "slide_from_right"
+              quality: "smooth"
+              duration_feeling: "smooth"
+            continuous_motion:
+              type: "subtle_float"
+            emphasis_moments:
+              - trigger: "二氧化碳气体"
+                effect: "glow_intensify"
+              - trigger: "微型气泡"
+                effect: "scale_pulse"
+            exit:
+              style: "dissolve"
+              quality: "smooth"
+          transition_design:
+            type: "dissolve"
+            timing: "leisurely"
+            visual_bridge: "从结构图溶解到口腔环境"
+            narrative_purpose: "从原理过渡到过程展示"
+        
+        emotional_tone: "inspiring"
+        transition_logic: "dissolve"
       
       - scene_number: 3
-        timecode: "0:60 - 0:90 (30秒，约114字）"
-        scene_objective: "总结并引发探索欲"
-        narrative_function: "resolution（启发探索）"
+        timecode: "0:15 - 0:28 (13秒，约49字）"
+        scene_objective: "展示释放过程"
+        narrative_function: "climax"
         key_dialogue: |
-          量子力学虽然反直觉，但已在**量子计算**中应用。
-          它改变了我们对**现实本质**的理解。
-          希望激发了你对微观世界的探索欲！
-          # 总计51字，51/30 = 1.7字/秒（适中）
+          当你把跳跳糖放进嘴里，唾液开始溶解糖的表面。糖壳变薄变脆，一旦某个位置被溶穿，封存的二氧化碳就会**瞬间释放**。气体急速膨胀，推动糖块碎裂，在口腔中产生微小但快速的冲击。成百上千次微小破裂接连发生，振动通过牙齿、舌头传播，就变成了**噼里啪啦**的声音。
         
-        visual_hook: "粒子发光、量子门电路动画、文字浮现"
-        emotional_tone: "inspiring（启发，鼓励探索）"
-        transition_logic: "N/A（最后一个场景）"
+        visual_direction:
+          scene_visual_identity:
+            perspective_scale: "extreme_intimate"
+            scale_journey: "极端微观视角，展示释放瞬间"
+          composition_strategy:
+            primary_rule: "diagonal"
+            focal_point: "bottom_right"
+            leading_elements: "破裂动态从左上向右下发展"
+            negative_space: "动态负空间，跟随破裂方向"
+          lighting_design:
+            lighting_mood: "dramatic_contrast"
+            key_light:
+              direction: "back"
+              quality: "hard"
+              color_temperature: "warm"
+          color_strategy:
+            dominant_tone: "warm_orange"
+            contrast_approach: "complementary"
+            saturation_arc: "释放瞬间达到最高饱和"
+          depth_layers:
+            foreground:
+              content: "唾液分子示意"
+              blur_level: "heavy"
+              opacity: 0.4
+            midground:
+              content: "糖壳破裂瞬间"
+              emphasis: "primary"
+            background:
+              content: "口腔环境暗示"
+              blur_level: "moderate"
+              opacity: 0.6
+          motion_design:
+            entrance:
+              style: "fade_in"
+              quality: "smooth"
+              duration_feeling: "smooth"
+            continuous_motion:
+              type: "gentle_breathe"
+            emphasis_moments:
+              - trigger: "瞬间释放"
+                effect: "scale_pulse"
+              - trigger: "噼里啪啦"
+                effect: "rapid_pulse"
+            exit:
+              style: "dissolve"
+              quality: "smooth"
+          transition_design:
+            type: "match_dissolve"
+            timing: "leisurely"
+            visual_bridge: "破裂的糖晶形状匹配声波图案"
+            narrative_purpose: "从过程展示过渡到总结"
+        
+        emotional_tone: "suspense"
+        transition_logic: "match_dissolve"
+      
+      - scene_number: 4
+        timecode: "0:28 - 0:35 (7秒，约27字）"
+        scene_objective: "总结升华"
+        narrative_function: "resolution"
+        key_dialogue: |
+          所以，跳跳糖的"跳"是一场被设计好的物理释放秀：高压气体出狱、糖壳崩解、微振动叠加，最终变成你嘴里那场热闹的**小型声学表演**。
+        
+        visual_direction:
+          scene_visual_identity:
+            perspective_scale: "personal"
+            scale_journey: "回到个人尺度，总结全局"
+          composition_strategy:
+            primary_rule: "symmetry"
+            focal_point: "center"
+            leading_elements: "中心对称，平衡收尾"
+            negative_space: "充足负空间，温暖收尾"
+          lighting_design:
+            lighting_mood: "warm_even"
+            key_light:
+              direction: "front"
+              quality: "soft"
+              color_temperature: "warm"
+          color_strategy:
+            dominant_tone: "golden"
+            contrast_approach: "analogous"
+            saturation_arc: "温暖饱和，圆满收尾"
+          depth_layers:
+            foreground:
+              content: "总结文字"
+              blur_level: "none"
+              opacity: 1.0
+            midground:
+              content: "糖晶与声波图形"
+              emphasis: "secondary"
+            background:
+              content: "温暖渐变"
+              blur_level: "slight"
+              opacity: 0.8
+          motion_design:
+            entrance:
+              style: "fade_in"
+              quality: "smooth"
+              duration_feeling: "smooth"
+            continuous_motion:
+              type: "static"
+            emphasis_moments:
+              - trigger: "小型声学表演"
+                effect: "gentle_scale_up"
+            exit:
+              style: "fade_out"
+              quality: "smooth"
+          transition_design:
+            type: "fade"
+            timing: "leisurely"
+            visual_bridge: "N/A"
+            narrative_purpose: "视频结束"
+        
+        emotional_tone: "inspiring"
+        transition_logic: "N/A"
   
   audio_design:
     voice_direction:
-      casting_specifications: "female-shaonv（温暖有活力，符合inspiring基调）"
-      emotional_range: "inspiring（全程启发性情感）"
+      casting_specifications: "female-cute（活泼可爱，符合playful基调）"
+      emotional_range: "playful → inspiring（活泼到启发）"
       technical_requirements: "speed=1.0, emotion=neutral, language_boost=Chinese"
     
     sound_design:
-      ambient_soundscape: "deep space ambience（深邃太空氛围）"
-      sound_effects: "particle glow whoosh（粒子发光音效）, box open sound（箱子打开音）"
+      ambient_soundscape: "light playful ambience（轻松活泼氛围）"
+      sound_effects: "popping sounds（噼里啪啦音效）, fizzing（气泡声）, gentle whoosh（柔和转场音）"
       musical_score: |
-        Style: cinematic orchestral with piano（电影管弦乐+钢琴）
-        Tempo: moderate (60-80 BPM)
-        Instrumentation: strings（弦乐）, piano（钢琴）, subtle electronic（微弱电子）
-        Voice level: -18 to -12 LUFS
-        Music level: -24 to -20 LUFS
-        Emotional alignment: inspiring/uplifting（启发性/上升感）
-      audio_transitions: "crossfade between scenes, stinger at key moments（场景间交叉淡入淡出，关键时刻使用音效）"
+        Style: upbeat pop with whimsical elements（欢快流行乐+俏皮元素）
+        Tempo: fast (100-120 BPM)
+        Instrumentation: ukulele（尤克里里）, xylophone（木琴）, light percussion（轻打击乐）
+        Voice level: -16 LUFS
+        Music level: -20 LUFS
+        Emotional alignment: playful/curious → inspiring（活泼/好奇 → 启发）
+      audio_transitions: "crossfade between scenes, popping accent at key moments（场景间交叉淡入淡出，关键时刻使用噼啪音效）"
   
   visual_art:
     cinematic_style:
-      visual_aesthetic: "cinematic with particle effects（电影感+粒子特效）"
+      visual_aesthetic: "playful scientific visualization（活泼科学可视化）"
       color_palette:
-        primary_colors: "teal (#00bfff), dark blue (#001f3f)"
-        secondary_colors: "orange (#ff6b35), white (#ffffff)"
+        primary_colors: "warm orange (#ff6b35), bright yellow (#ffd93d)"
+        secondary_colors: "teal (#00bfff), soft pink (#ffb6c1)"
         emotional_mapping: |
-          teal: 好奇心、科技、探索
-          dark blue: 深度、专业、稳重
-          orange: 能量、注意力、温暖
-        progression_arc: "dark blue (scene 1) → teal/orange blend (scene 2) → teal with particles (scene 3)"
+          warm orange: 能量、活泼、注意力
+          bright yellow: 快乐、好奇、阳光
+          teal: 科学、清新、信任
+          soft pink: 温暖、友好、亲切
+        progression_arc: "warm yellow (scene 1) → cool teal (scene 2) → warm orange (scene 3) → golden (scene 4)"
       
-      texture_and_grain: "subtle film grain（微妙电影颗粒）"
-      lighting_philosophy: "dramatic side lighting, rim light（戏剧性侧光、轮廓光）"
-      depth_strategy: "foreground (particles/quantum elements) → midground (cats/boxes) → background (deep space/gradient)"
+      texture_and_grain: "clean with subtle texture（干净带微妙质感）"
+      lighting_philosophy: "bright and even with warm accents（明亮均匀带温暖强调）"
+      depth_strategy: "2-3 layer depth for scientific visualization（2-3层深度用于科学可视化）"
     
     composition:
-      aspect_ratio: "16:9（标准横屏）"
+      aspect_ratio: "16:9"
       framing_principles:
-        - "rule of thirds（粒子放置在三分线交点）"
-        - "leading lines（连接线引导视觉流向）"
-        - "negative space（留白，避免拥挤）"
-        - "visual hierarchy（关键元素优先）"
+        - "center focus for intimate scenes（亲密场景中心聚焦）"
+        - "rule of thirds for process visualization（过程可视化三分法）"
+        - "dynamic negative space（动态负空间）"
+        - "clear visual hierarchy（清晰视觉层级）"
       
-      camera_perspective: "medium shot with slight movement（中景，微动）"
-      movement_philosophy: "subtle camera drift（微妙的镜头漂移，营造沉浸感）"
+      camera_perspective: "mix of intimate close-ups and environmental shots（亲密特写与环境镜头混合）"
+      movement_philosophy: "playful motion with spring animations（俏皮运动带弹性动画）"
     
     motion_design:
-      animation_style: "dynamic with particle effects（动态，粒子特效）"
-      easing_strategies: "spring for particle emission（粒子发射用弹簧动画）, ease-in-out for transitions（转场用缓入缓出）"
-      transition_language: "dissolve, fade, match cut（渐变、淡出、匹配剪接）"
-      parallax_depth: "3-layer parallax（三层视差：前景粒子/中景内容/背景空间）"
+      animation_style: "bouncy and energetic with smooth transitions（弹性活力带平滑转场）"
+      easing_strategies: "spring for emphasis（强调用弹性）, ease-in-out for transitions（转场用缓入缓出）"
+      transition_language: "dissolve, match dissolve, slide（溶解、匹配溶解、滑动）"
+      parallax_depth: "2-layer parallax for scientific elements（科学元素2层视差）"
     
     typography:
       font_system:
-        primary_font: "Inter Bold（标题、强调）"
-        secondary_font: "Inter Regular（正文、信息）"
-        font_pairing_rationale: "现代无衬线，清晰易读，适合科技内容"
+        primary_font: "Nunito Bold（标题、强调 - 圆润友好）"
+        secondary_font: "Nunito Regular（正文、信息 - 清晰易读）"
+        font_pairing_rationale: "圆润无衬线字体，友好活泼，适合科普内容"
       
-      text_animation: "fade in with slide, emphasize on keywords（淡入滑动，关键词强调）"
-      information_hierarchy: "title (largest) → key terms (highlighted) → explanation (medium) → details (smallest)"
+      text_animation: "bounce in for emphasis（强调时弹跳进入）, fade for information（信息时淡入）"
+      information_hierarchy: "title (largest, bouncy) → key terms (highlighted, pulse) → explanation (medium) → details (smallest)"
       readability_standards: "contrast ratio 4.5:1 minimum, min size 24px for body text"
   
   post_production:
     editing_approach:
-      rhythm_and_pacing: "moderate, accelerate at quantum reveals, slow at explanations（适中，量子揭示时加速，解释时放慢）"
-      scene_transitions: "dissolve between scenes, match cut for quantum gates（场景间渐变，量子门使用匹配剪接）"
-      parallel_editing: "N/A（无并行编辑）"
-      montage_sequences: "N/A（无蒙太奇）"
+      rhythm_and_pacing: "playful opening, building to exciting climax, warm resolution（活泼开场，逐步升级到兴奋高潮，温暖收尾）"
+      scene_transitions: "dissolve for gentle transitions, match dissolve for concept connections（温和转场用溶解，概念连接用匹配溶解）"
+      parallel_editing: "N/A"
+      montage_sequences: "N/A"
     
     visual_effects:
-      vfx_requirements: "particle glow, quantum connection lines, cat overlay, film grain overlay"
-      compositing_standards: "blend modes: screen for glow, normal for overlay, multiply for film grain"
-      motion_graphics: "quantum gate animation, text reveal with kinetic typography"
-      title_design: "clean title card with subtitle, fade in over particle background"
+      vfx_requirements: "particle popping effects, bubble visualization, sugar crystal glow, sound wave graphics"
+      compositing_standards: "blend modes: screen for glow, normal for overlay"
+      motion_graphics: "popping animation, bubble release visualization, kinetic text for key terms"
+      title_design: "playful title card with bounce animation, fade in over warm background"
     
     color_grading:
-      grade_style: "cinematic with teal tint, increased contrast, slight desaturation for depth"
-      shot_matching: "match scenes with teal color grading, ensure consistent skin tones (if any)"
-      creative_looks: "glow effect at quantum reveals, desaturate at explanations"
+      grade_style: "warm and vibrant, slight saturation boost, consistent color temperature"
+      shot_matching: "match scenes with warm color grading, ensure consistent playful tone"
+      creative_looks: "glow effect at popping moments, warm vignette for intimacy"
       technical_standards: "rec.709 color space, gamma 2.4"
     
     audio_post:
-      final_mix: "voice at -16 LUFS integrated, music under, SFX at -20 LUFS"
-      sound_sweetening: "add subtle reverb to voice, enhance particle whoosh"
-      music_editing: "fade in at scene starts, crossfade between scenes, fade out at end"
-      mastering: "final output at -16 LUFS integrated, 48kHz stereo MP3"
+      final_mix: "voice at -16 LUFS, music at -20 LUFS, SFX at -18 LUFS"
+      sound_sweetening: "add playful reverb to voice, enhance popping sounds"
+      music_editing: "fade in at scene starts, crossfade between scenes, upbeat ending"
+      mastering: "final output at -16 LUFS, 48kHz stereo MP3"
     
     post_quality_gates:
-      editing_check: "narrative flow smooth, quantum reveals timed with music beats"
+      editing_check: "playful rhythm maintained, climax timing with popping sounds"
       technical_check: "no glitches, audio sync within 0.1s"
-      creative_check: "emotional impact achieved, curious to inspiring arc complete"
-      consistency_check: "teal color consistent, particle effects cohesive"
+      creative_check: "curiosity to wonder to understanding arc complete"
+      consistency_check: "warm playful style consistent throughout"
   
   final_deliverables:
     master_files:
@@ -204,185 +384,13 @@ video_director_framework:
 
 ---
 
-### Example 2: Commercial Product Video (商业产品视频)
+**设计亮点说明：**
 
-**视频类型**：commercial（推广智能手表）  
-**情感基调**：professional（专业权威）  
-**目标时长**：60 秒（short）  
-**目标受众**：general（大众，对健康科技感兴趣）
+1. **情感曲线设计**：从 playful（活泼）开场，经过 inspiring（启发）的原理讲解，到 suspense（悬疑）的过程展示，最后回到 inspiring（启发）的总结，形成完整的情感弧线。
 
-```yaml
-video_director_framework:
-  director_vision:
-    creative_vision: |
-      核心信息：智能手表是健康管理的新时代。
-      情感旅程：痛点共鸣 → 解决方案兴奋 → 信任建立 → 行动呼吁。
-      风格定位：minimalist with clean typography（极简 + 清晰排版，强调专业性）。
-      关键隐喻：时间流动用动态数据可视化，健康数据用进度条和图表。
-    
-    target_audience:
-      demographics: "general（25-45岁，关注健康）"
-      viewing_context: "mobile/desktop（社交媒体、产品官网）"
-      prior_knowledge: "minimal（对智能手表有基本了解）"
-      emotional_needs: "trust, excitement, motivation（信任、兴奋、行动激励）"
-    
-    success_metrics:
-      engagement_goals: "completion_rate > 70%（完整观看）, click-through > 5%（点击转化）"
-      learning_outcomes: "N/A（非教育内容）"
-      brand_objectives: "品牌信任建立，产品功能认知"
-      artistic_aspirations: "极简现代设计，清晰信息传达"
-  
-  scriptwriting:
-    narrative_structure:
-      story_arc: "problem_solution（痛点呈现→产品展示→行动呼吁）"
-      pacing_strategy: "fast with emphasis at benefits（快节奏，突出利益）"
-      key_moments: "1. 健康管理痛点（共鸣） 2. 智能手表功能（展示） 3. 行动呼吁（激励）"
-      call_to_action: "访问官网购买（明确行动）"
-    
-    scenes:
-      - scene_number: 1
-        timecode: "0:00 - 0:15 (15秒）"
-        scene_objective: "呈现健康管理痛点"
-        narrative_function: "setup（铺垫问题）"
-        key_dialogue: |
-          你是否厌倦了手动记录健康数据？
-          步数、睡眠、心率，每次都要打开**不同应用**。
-          这种碎片化让健康管理变得**复杂而低效**。
-        
-        visual_hook: "灰色背景，多个手机应用图标散乱显示"
-        emotional_tone: "professional（专业，理性陈述问题）"
-        transition_logic: "cut（直接切换，进入解决方案）"
-      
-      - scene_number: 2
-        timecode: "0:15 - 0:45 (30秒）"
-        scene_objective: "展示智能手表的一体化解决方案"
-        narrative_function: "development（展示优势）"
-        key_dialogue: |
-          智能手表让健康管理**简单而强大**。
-          一块手表，自动记录**所有健康指标**。
-          实时分析，给你**科学的健康建议**。
-        
-        visual_hook: "智能手表产品图，健康数据可视化动态展示"
-        emotional_tone: "inspiring（启发，激发兴奋）"
-        transition_logic: "fade（淡出，进入行动呼吁）"
-      
-      - scene_number: 3
-        timecode: "0:45 - 1:00 (15秒）"
-        scene_objective: "行动呼吁"
-        narrative_function: "resolution（激励行动）"
-        key_dialogue: |
-          现在是时候拥抱**智能健康管理**了。
-          点击下方链接，开启你的**健康新时代**。
-        
-        visual_hook: "产品图+购买按钮，动态强调"
-        emotional_tone: "professional（专业，建立信任）"
-        transition_logic: "N/A（最后一个场景）"
-  
-  audio_design:
-    voice_direction:
-      casting_specifications: "male-authoritative（专业权威，符合professional基调）"
-      emotional_range: "professional（全程专业情感）"
-      technical_requirements: "speed=1.0, emotion=neutral, language_boost=Chinese"
-    
-    sound_design:
-      ambient_soundscape: "clean tech ambience（简洁科技氛围）"
-      sound_effects: "data sync whoosh（数据同步音）, notification ping（通知音）"
-      musical_score: |
-        Style: minimalist electronic with piano（极简电子乐+钢琴）
-        Tempo: moderate (80-100 BPM)
-        Instrumentation: electronic beats（电子节拍）, piano accents（钢琴强调）
-        Voice level: -16 LUFS
-        Music level: -22 LUFS
-        Emotional alignment: professional/inspiring（专业/启发性）
-      audio_transitions: "crossfade, stinger at action call（场景间交叉淡入淡出，行动呼吁使用提示音）"
-  
-  visual_art:
-    cinematic_style:
-      visual_aesthetic: "minimalist with clean typography（极简+清晰排版）"
-      color_palette:
-        primary_colors: "navy blue (#001f3f), white (#ffffff)"
-        secondary_colors: "accent blue (#007bff), light gray (#e0e0e0)"
-        emotional_mapping: |
-          navy blue: 专业、权威、信任
-          white: 纯净、清晰、简洁
-          accent blue: 重点、行动、现代
-        progression_arc: "gray (scene 1) → navy+white (scene 2) → white+accent (scene 3)"
-      
-      texture_and_grain: "clean, no grain（无颗粒，保持现代感）"
-      lighting_philosophy: "even flat lighting, no shadows（均匀平面光照，无阴影）"
-      depth_strategy: "flat 2D, no depth（扁平化2D，无深度）"
-    
-    composition:
-      aspect_ratio: "16:9（标准横屏）"
-      framing_principles:
-        - "center alignment（居中对齐）"
-        - "vertical hierarchy（垂直层级：标题→产品→信息）"
-        - "negative space（留白，保持整洁）"
-        - "visual priority（行动按钮优先）"
-      
-      camera_perspective: "N/A（无相机运动，静态展示）"
-      movement_philosophy: "subtle scale for emphasis（微妙缩放强调）"
-    
-    motion_design:
-      animation_style: "clean geometric with consistent rhythm（简洁几何，一致节奏）"
-      easing_strategies: "ease-in-out for all transitions（所有转场用缓入缓出）"
-      transition_language: "cut, fade, slide（直接切换、淡出、滑动）"
-      parallax_depth: "N/A（无视差，扁平化）"
-    
-    typography:
-      font_system:
-        primary_font: "SF Pro Display Bold（标题）"
-        secondary_font: "SF Pro Text Regular（正文）"
-        font_pairing_rationale: "苹果风格字体，专业现代，适合科技产品"
-      
-      text_animation: "fade in up for title, stagger reveal for features（标题上淡入，功能错开显示）"
-      information_hierarchy: "headline (largest) → subheadlines → features (medium) → CTA (highlighted)"
-      readability_standards: "contrast ratio 7:1, min size 28px for body text"
-  
-  post_production:
-    editing_approach:
-      rhythm_and_pacing: "fast, sync cuts with music beats, accelerate at CTA（快节奏，剪接对齐音乐节拍，行动呼吁时加速）"
-      scene_transitions: "cut between scenes, slide for CTA（场景间直接切换，行动呼吁滑动）"
-      parallel_editing: "N/A"
-      montage_sequences: "N/A"
-    
-    visual_effects:
-      vfx_requirements: "data visualization animations, product clean composite, subtle glow on CTA"
-      compositing_standards: "blend modes: normal for overlay, screen for glow"
-      motion_graphics: "progress bar animation, sync effects for health data, kinetic CTA button"
-      title_design: "clean title card with minimal motion, fade in over white background"
-    
-    color_grading:
-      grade_style: "minimalist with high contrast, slight cool tint, no color cast"
-      shot_matching: "match scenes with navy blue consistency, maintain clean whites"
-      creative_looks: "subtle glow on product, clean focus on CTA"
-      technical_standards: "sRGB color space, linear gamma"
-    
-    audio_post:
-      final_mix: "voice at -16 LUFS, music at -22 LUFS, SFX at -20 LUFS"
-      sound_sweetening: "tight reverb on voice, crisp sync effects"
-      music_editing: "quick crossfades, sync cuts with beats, emphasis at CTA"
-      mastering: "final output at -16 LUFS, 48kHz stereo MP3"
-    
-    post_quality_gates:
-      editing_check: "fast pace maintains engagement, CTA timing perfect"
-      technical_check: "no glitches, sync perfect"
-      creative_check: "trust established, excitement built, clear CTA"
-      consistency_check: "minimal style consistent, typography coherent"
-```
+2. **视觉尺度变化**：从 intimate（糖晶特写）→ environmental（制作过程）→ extreme_intimate（微观破裂）→ personal（总结），让观众经历从宏观到微观再到宏观的视觉旅程。
 
----
+3. **色彩策略**：warm golden（开场吸引）→ cool teal（科学理性）→ warm orange（能量释放）→ golden（温暖收尾），色彩随情感和内容变化。
 
-### Key Differences: Educational vs. Commercial Videos
-
-| Aspect | Educational (科普) | Commercial (商业) |
-|---------|-------------------|---------------------|
-| **情感基调** | inspiring/suspense（启发/悬疑） | professional/trust（专业/信任） |
-| **视觉风格** | cinematic + particles（电影感+粒子） | minimalist + clean（极简+清晰） |
-| **色彩策略** | teal/orange/dark blue（好奇/能量/深度） | navy/white/accent blue（专业/纯净/行动） |
-| **音乐风格** | cinematic orchestral（电影管弦乐） | minimalist electronic（极简电子乐） |
-| **节奏策略** | moderate with emphasis（适中，强调） | fast with sync（快速，同步） |
-| **转场类型** | dissolve/fade（渐变/淡出） | cut/slide（直接切换/滑动） |
-| **文字风格** | dynamic emphasis（动态强调） | clean hierarchy（清晰层级） |
-| **目标指标** | watch time/completion（观看时间/完整率） | conversion/click-through（转化/点击） |
+4. **Remotion 可行性**：所有设计元素都在 Remotion 支持范围内，包括 spring 动画、溶解转场、分层景深模拟等。
 
