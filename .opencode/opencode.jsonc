@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "minimax-mcp": {
+      "type": "local",
+      "command": ["uvx", "minimax-mcp"],
+      "environment": {
+        "MINIMAX_API_KEY": "",
+        "MINIMAX_MCP_BASE_PATH": "./public",
+        "MINIMAX_API_HOST": "https://api.minimaxi.com",
+        "MINIMAX_API_RESOURCE_MODE": "local",
+      },
+      "enabled": true,
+    },
+  },
+}

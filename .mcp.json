@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "minimax-mcp-js": {
+      "command": "npx",
+      "args": ["-y", "minimax-mcp-js"],
+      "env": {
+        "MINIMAX_API_HOST": "https://api.minimaxi.com",
+        "MINIMAX_API_KEY": "",
+        "MINIMAX_MCP_BASE_PATH": "./public",
+        "MINIMAX_RESOURCE_MODE": "local"
+      },
+      "transport": "studio"
+    }
+  }
+}

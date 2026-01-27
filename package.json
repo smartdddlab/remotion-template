@@ -1,0 +1,23 @@
+{
+  "name": "remotion-template",
+  "version": "1.0.0",
+  "description": "Remotion 视频制作模板项目",
+  "main": "index.js",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts JumpSugarVideo output/video.mp4",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": ["remotion", "video", "template"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "remotion": "^4.0.409",
+    "@remotion/cli": "^4.0.409"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.10",
+    "@types/react": "^19.2.9",
+    "typescript": "^5.9.3"
+  }
+}
