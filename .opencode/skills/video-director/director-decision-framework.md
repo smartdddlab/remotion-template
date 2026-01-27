@@ -15,14 +15,14 @@ input_analysis:
     commercial: "商业/产品类（推广产品、提升品牌）"
     tutorial: "教程类（步骤教学、技能学习）"
     documentary: "纪录片类（讲述故事、记录事实）"
-  
+
   # 2. 核心主题分析
   core_theme:
     scientific: "科学/技术（量子物理、人工智能、生物学）"
     business: "商业/经济（市场营销、金融、管理）"
     lifestyle: "生活方式（健康、旅行、美食）"
     entertainment: "娱乐/文化（电影、音乐、艺术）"
-  
+
   # 3. 情感基调识别
   emotional_tone:
     inspiring: "激发/启发性（激发好奇心、探索欲）"
@@ -30,14 +30,25 @@ input_analysis:
     suspense: "悬疑/紧张（制造期待、揭示真相）"
     professional: "专业/权威（信任感、可靠性）"
     playful: "活泼/趣味（轻松、幽默、互动）"
-  
-  # 4. 目标时长规划
+
+  # 4. 风格识别（NEW）
+  style_recognition:
+    explicit_style:
+      - "用户明确指定风格（如'中国风视频'、'赛博朋克风格'）"
+      - "直接使用指定风格"
+    implicit_style:
+      - "根据内容主题推荐风格"
+      - "传统文化 → cultural_style: 'chinese'"
+      - "科技未来 → era_style: 'future' + genre_style: 'cyberpunk'"
+      - "治愈放松 → genre_style: 'minimalist' or cultural_style: 'japanese'"
+
+  # 5. 目标时长规划
   target_duration:
     short: "< 60s（社交媒体、广告）"
     medium: "60-180s（YouTube、B站视频）"
     long: "> 180s（纪录片、深度讲解）"
-  
-  # 5. 目标受众分析
+
+  # 6. 目标受众分析
   target_audience:
     general: "大众（广泛受众，易理解）"
     professional: "专业人士（领域专家，深度内容）"
@@ -52,7 +63,258 @@ input_analysis:
 ```yaml
 # 导演决策树（从上到下执行）
 director_decision_tree:
-  
+
+  # 步骤 0：智能风格决策流程（ENHANCED）
+  step0_intelligent_style_decision:
+    # === 决策流程：严格的风格处理逻辑 ===
+    decision_flow:
+      # 阶段 1：检查用户是否明确指定风格
+      stage1_explicit_style_check:
+        # 检查用户输入中是否包含明确的风格关键词
+        # 明确风格：chinese, japanese, cyberpunk, minimalist 等预定义风格
+        # 泛风格：cool, modern, advanced, professional 等模糊描述
+        check_result:
+          explicit_style_found: "处理场景1：用户明确指定风格"
+          vague_style_found: "处理场景2：用户指定了模糊风格，需要引导澄清"
+          no_style_found: "进入阶段2：尝试自动识别"
+
+      # 阶段 2：尝试自动风格识别
+      stage2_auto_style_recognition:
+        # 基于内容主题、情感基调、视频类型的综合推荐
+        recognition_methods:
+          content_based_analysis: "分析文案内容，提取主题关键词"
+          emotion_based_analysis: "分析情感基调，推荐匹配风格"
+          video_type_analysis: "根据视频类型推荐默认风格"
+
+        confidence_level:
+          high_confidence: "置信度高（>80%），自动应用推荐风格"
+          medium_confidence: "置信度中等（50-80%），向用户确认推荐"
+          low_confidence: "置信度低（<50%），停止并请求用户指定风格"
+
+      # 阶段 3：用户交互和确认
+      stage3_user_interaction:
+        # 根据识别结果决定交互策略
+        interaction_strategies:
+          confirm_high_confidence: "展示高置信度推荐，询问用户是否确认"
+          clarify_vague_style: "引导用户澄清模糊风格（如'酷炫的'具体是什么）"
+          suggest_options: "提供2-3个风格选项让用户选择"
+          request_specific_style: "明确请求用户指定风格"
+
+    # === 场景1：用户明确指定风格 ===
+    explicit_style_input:
+      chinese →
+        cultural_style: "chinese"
+        era_style: "modern" (默认现代中国风，可根据内容调整)
+        genre_style: "minimalist" (默认，可调整)
+        confidence: "high"
+
+      japanese →
+        cultural_style: "japanese"
+        era_style: "modern"
+        genre_style: "minimalist"
+        confidence: "high"
+
+      cyberpunk →
+        cultural_style: "western" (或留空)
+        era_style: "future"
+        genre_style: "cyberpunk"
+        confidence: "high"
+
+      minimalist → genre_style: "minimalist" + era_style: "modern"
+      cartoon → genre_style: "cartoon" + era_style: "modern"
+      vaporwave → genre_style: "vaporwave" + era_style: "retro"
+      steampunk → genre_style: "steampunk" + era_style: "classical"
+      pop_art → genre_style: "pop_art" + era_style: "modern"
+      abstract → genre_style: "abstract" + era_style: "modern"
+      hyper_realistic → genre_style: "hyper_realistic" + era_style: "modern"
+
+    # === 场景2：模糊风格处理（需要澄清）===
+    vague_style_clarification:
+      # 用户使用了模糊描述，需要引导澄清
+      vague_terms:
+        cool: "请具体说明：是科技感（cyberpunk）还是现代感（modern minimalist）？"
+        modern: "请具体说明：是现代极简（minimalist）还是现代科技（tech）？"
+        advanced: "请具体说明：是高科技（future tech）还是专业感（professional minimalist）？"
+        professional: "请具体说明：是专业极简（minimalist）还是商业风（corporate graphic）？"
+        creative: "请具体说明：是艺术抽象（abstract）还是手绘创意（illustrative）？"
+        elegant: "请具体说明：是典雅中国风（chinese）还是简约和风（japanese minimalist）？"
+        fun: "请具体说明：是卡通趣味（cartoon）还是活泼波普（pop_art）？"
+
+      # 澄清后的映射建议
+      clarification_mapping:
+        "科技感 / 未来感" → era_style: "future" + genre_style: "cyberpunk"
+        "现代感 / 简约" → era_style: "modern" + genre_style: "minimalist"
+        "艺术感 / 创意" → genre_style: "abstract" or "illustrative"
+        "传统文化感" → cultural_style: "chinese" or "japanese"
+        "复古怀旧" → era_style: "retro" + genre_style: "vaporwave"
+        "专业商务" → genre_style: "minimalist" + visual_aesthetic: "graphic"
+
+    # === 场景3：根据内容主题自动推荐 ===
+    content_based_recommendation:
+      # 传统文化主题
+      传统文化 / 古诗词 / 水墨画 / 中国文化 / 中医 / 国学 → 
+        cultural_style: "chinese"
+        era_style: "modern"
+        genre_style: "minimalist"
+        confidence: "high"
+
+      # 科技主题
+      科技 / 人工智能 / AI / 未来 / 宇宙 / 机器人 / 编程 → 
+        era_style: "future"
+        genre_style: "cyberpunk"
+        confidence: "high"
+
+      # 教育/科普主题
+      教育 / 科普 / 知识 / 教学 / 学习 / 教程 → 
+        genre_style: "minimalist" or "illustrative"
+        visual_aesthetic: "graphic"
+        confidence: "high"
+
+      # 治愈/放松主题
+      治愈 / 放松 / 冥想 / 睡眠 / 心理健康 / 正念 → 
+        cultural_style: "japanese"
+        era_style: "modern"
+        genre_style: "minimalist"
+        confidence: "high"
+
+      # 复古主题
+      复古 / 90年代 / 怀旧 / 老物件 / 复古风 → 
+        era_style: "retro"
+        genre_style: "vaporwave"
+        confidence: "high"
+
+      # 商业/产品主题
+      商业 / 产品 / 营销 / 品牌 / 企业 / 创业 → 
+        genre_style: "minimalist"
+        visual_aesthetic: "graphic"
+        confidence: "medium"
+
+      # 自然/环境主题
+      自然 / 环境 / 生态 / 植物 / 动物 / 环保 → 
+        genre_style: "illustrative"
+        confidence: "medium"
+
+      # 艺术/文化主题
+      艺术 / 文化 / 音乐 / 电影 / 文学 → 
+        genre_style: "abstract" or "illustrative"
+        confidence: "medium"
+
+    # === 场景4：根据情感基调自动推荐 ===
+    emotion_based_recommendation:
+      inspiring → 
+        cultural_style: "chinese" (启发+东方智慧) 
+        or genre_style: "minimalist"
+        confidence: "medium"
+
+      calm → 
+        cultural_style: "japanese"
+        or genre_style: "minimalist"
+        confidence: "high"
+
+      suspense → 
+        genre_style: "cyberpunk"
+        or cultural_style: "western"
+        confidence: "high"
+
+      professional → 
+        genre_style: "minimalist"
+        era_style: "modern"
+        visual_aesthetic: "graphic"
+        confidence: "high"
+
+      playful → 
+        genre_style: "cartoon" 
+        or "pop_art"
+        era_style: "modern"
+        confidence: "high"
+
+    # === 场景5：根据视频类型默认推荐 ===
+    video_type_default_recommendation:
+      educational → 
+        genre_style: "minimalist"
+        visual_aesthetic: "graphic"
+        confidence: "high"
+
+      commercial → 
+        genre_style: "minimalist"
+        visual_aesthetic: "graphic"
+        confidence: "high"
+
+      tutorial → 
+        genre_style: "minimalist"
+        visual_aesthetic: "graphic"
+        confidence: "high"
+
+      documentary → 
+        visual_aesthetic: "cinematic"
+        confidence: "medium"
+
+    # === 场景6：未定义风格处理 ===
+    undefined_style_handling:
+      # 用户提出了不在定义范围内的风格
+      handling_strategy: |
+        1. 识别用户意图：分析用户想要表达的视觉感受
+        2. 提供最接近的风格选项：基于关键词匹配推荐2-3个最接近的预定义风格
+        3. 请求确认：询问用户是否接受推荐的风格，或需要进一步澄清
+        4. 记录新风格：如果用户坚持使用新风格，记录并手动定义风格映射
+
+      example_responses:
+        - "您提到的'XX风格'目前不在我们的预定义风格库中。最接近的选项是：A、B、C。您希望使用哪一个？"
+        - "我理解您想要'XX感觉'的视频。根据您的描述，推荐使用'YY风格'，它具有类似的视觉特征。您觉得合适吗？"
+        - "为了更好地实现您的创意，可以具体描述一下'XX风格'的视觉特点吗？（例如：色彩、元素、氛围）"
+
+    # === 置信度计算和决策 ===
+    confidence_calculation:
+      # 计算风格推荐的置信度
+      factors:
+        keyword_match: "用户输入中风格关键词的匹配度（0-100%）"
+        content_relevance: "风格与内容主题的相关性（0-100%）"
+        emotion_alignment: "风格与情感基调的匹配度（0-100%）"
+        video_type_fit: "风格与视频类型的适配度（0-100%）"
+
+      decision_rules:
+        high_confidence: "总置信度 > 80% → 自动应用，询问用户确认"
+        medium_confidence: "总置信度 50-80% → 提供推荐选项，让用户选择"
+        low_confidence: "总置信度 < 50% → 停止，请求用户明确指定风格"
+
+      minimum_confidence_threshold: "50%（低于此值必须用户确认）"
+
+    # === 主动推荐策略 ===
+    proactive_recommendation:
+      # 在适当的时候主动推荐风格
+      recommendation_triggers:
+        - "用户没有指定任何风格时"
+        - "用户指定了模糊风格需要澄清时"
+        - "内容主题非常明确时（如'量子物理'→cyberpunk）"
+        - "情感基调非常强烈时（如'悬疑紧张'→cyberpunk）"
+
+      recommendation_format: |
+        基于您的[内容主题/情感基调/视频类型]，我推荐使用**[风格名称]**风格。
+        理由：[风格与内容的匹配说明]
+        视觉特点：[主要视觉特征]
+        您觉得这个推荐合适吗？还是您有其他偏好的风格？
+
+    # === 风格冲突检测与解决 ===
+    style_conflict_resolution:
+      # 检测不合理组合
+      conflict_examples:
+        - "chinese + cyberpunk" (冲突：传统vs未来)
+        - "classical + vaporwave" (冲突：古典vs波普)
+        - "cartoon + professional" (冲突：趣味vs专业)
+        - "abstract + tutorial" (冲突：抽象vs教程)
+
+      # 解决策略
+      resolution_strategies:
+        priority_based: "根据优先级选择：cultural > era > genre"
+        content_based: "根据内容主题重新评估"
+        user_consultation: "向用户说明冲突，请求选择主导风格"
+
+      conflict_warning_template: |
+        注意：检测到潜在风格冲突。
+        [风格A]和[风格B]在视觉表现上可能存在不协调。
+        建议：[解决方案]
+        您希望如何调整？
+
   # 步骤 1：根据视频类型 → 推荐脚本结构
   step1_script_structure:
     educational → three_act_structure
@@ -263,38 +525,50 @@ professional_standards:
 ```yaml
 # 导演决策前置检查表
 director_pre_flight_check:
-  
+
   # 输入分析验证
   input_analysis_verification:
     - [ ] 视频类型已识别（educational/commercial/tutorial/documentary）
     - [ ] 核心主题已提取（scientific/business/lifestyle/entertainment）
     - [ ] 情感基调已确定（inspiring/calm/suspense/professional/playful）
+    - [ ] 风格已识别（明确指定或根据内容/情感推荐）
     - [ ] 目标时长已规划（short/medium/long）
     - [ ] 目标受众已分析（general/professional/students/children）
-  
+
   # 决策树执行验证
   decision_tree_execution:
     - [ ] 脚本结构已根据视频类型确定
-    - [ ] 色彩策略已根据情感基调确定
-    - [ ] 音乐类型已与色彩策略匹配
+    - [ ] 风格定义已根据用户输入或内容主题确定
+    - [ ] 风格冲突已检测并解决（如 chinese + cyberpunk）
+    - [ ] 色彩策略已根据风格映射或情感基调确定
+    - [ ] 音乐类型已与风格或色彩策略匹配
     - [ ] 场景数量已根据时长规划确定
     - [ ] 语言深度已根据受众调整
-  
+
   # 跨阶段依赖验证
   cross_stage_dependency_check:
     - [ ] 剧本的 narrative_structure 已考虑对 visual_art.animation_style 的影响
     - [ ] 剧本的 emotional_tone 已考虑对 audio_design.musical_score 的影响
+    - [ ] style_definition 已正确映射到 visual_art 的所有字段
     - [ ] 视觉的 color_palette 已考虑与 music_style 的一致性
     - [ ] 音频的 music_tempo 已考虑对 post_production.editing_rhythm 的影响
     - [ ] 所有决策都有专业标准依据
-  
+
   # 决策一致性验证
   consistency_verification:
     - [ ] 所有场景的情感基调一致（或有意变化）
-    - [ ] 视觉风格在所有场景中统一
+    - [ ] 视觉风格在所有场景中统一（遵循 style_definition）
     - [ ] 音频风格与视觉风格匹配
     - [ ] 节奏策略支持叙事目标
     - [ ] 所有决策服务于核心创作愿景
+
+  # 风格系统验证（NEW）
+  style_system_verification:
+    - [ ] style_definition 已正确定义（cultural/era/genre）
+    - [ ] 风格映射已应用（color_palette, visual_elements, typography, motion_design）
+    - [ ] 风格冲突已检测（不合理组合已警告或解决）
+    - [ ] Baoyu-skills 图像生成参数已根据风格映射
+    - [ ] 风格与情感基调、视频类型一致
 ```
 
 ---

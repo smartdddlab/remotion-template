@@ -26,6 +26,7 @@ Production framework that transforms video scripts into structured plans with cl
 - Require quality checkpoints and department coordination
 - Converting text to professional video production framework
 - Want technology-agnostic creative direction
+- Need intelligent style handling (automatic recognition, vague style clarification, confidence-based recommendations)
 
 **Do NOT use for:**
 - Live-action shooting with physical crew coordination
@@ -57,11 +58,17 @@ Output: Complete production plan with pure creative direction (technology-agnost
 ## Framework Methodology
 
 **Director's Decision Process:**
-1. **Analyze Requirements** → Video type, theme, emotional tone, target audience
-2. **Plan Creative Elements** → Script structure, visual style, audio approach, pacing
+1. **Analyze Requirements** → Video type, theme, emotional tone, target audience, **style recognition**
+2. **Plan Creative Elements** → Script structure, visual style (following style constraints), audio approach, pacing
 3. **Coordinate Departments** → Ensure consistency across script, audio, visual design
 4. **Generate Production Plan** → Structured guidance for all implementation teams
 5. **Set Quality Checkpoints** → Review gates at each production stage
+
+**Style Recognition Sub-process:**
+- **Explicit style**: User specifies predefined style → apply directly with confirmation
+- **Vague style**: User uses ambiguous terms → must clarify before proceeding
+- **No style**: User doesn't specify → automatically recommend based on content with confidence check
+- **Undefined style**: User requests style not in library → provide closest options or request clarification
 
 See [quick-start-guide.md](quick-start-guide.md) for workflow and [director-decision-framework.md](director-decision-framework.md) for decision framework.
 
@@ -71,10 +78,106 @@ See [quick-start-guide.md](quick-start-guide.md) for workflow and [director-deci
 |------|----------------|
 | **Director's decision making** | [director-decision-framework.md](director-decision-framework.md) |
 | **Complete YAML template** | [complete-template-reference.md](complete-template-reference.md) |
+| **Style system & mapping** | [style-knowledge-base.md](style-knowledge-base.md) |
+| **Style examples (Chinese/Cyberpunk/Japanese)** | [style-examples.md](style-examples.md) |
 | **Step-by-step quick start** | [quick-start-guide.md](quick-start-guide.md) |
 | **Implementation & integration** | [implementation-guide.md](implementation-guide.md) |
 | **Troubleshooting & visual upgrades** | [troubleshooting-guide.md](troubleshooting-guide.md) |
 | **Complete examples** | [complete-examples.md](complete-examples.md) |
+
+### New: Style System (v5.1+)
+
+**视频风格框架**已扩展，支持文化、时代、流派三大维度：
+
+- **文化风格**：中国风、和风、韩风、欧美风、阿拉伯风、非洲风、拉丁美洲风
+- **时代风格**：古典、现代、未来、复古、蒸汽朋克
+- **流派风格**：极简、赛博朋克、蒸汽波、波普、抽象、超写实、卡通
+
+#### 智能风格处理流程（强制执行约束）
+
+作为导演，你必须遵循严格的风格处理逻辑以确保视频风格与内容完美匹配：
+
+**阶段1：用户输入分析**
+- 检查用户是否明确指定了预定义风格（如"中国风"、"赛博朋克"）
+- 识别用户是否使用了模糊风格描述（如"酷炫的"、"专业的"）
+- 分析文本内容主题、情感基调、视频类型
+
+**阶段2：智能风格决策**
+```yaml
+# 决策流程（强制执行）
+decision_flow:
+  # 场景1：用户明确指定预定义风格
+  explicit_style_found: 
+    - 直接使用指定风格
+    - 展示风格映射给用户确认
+  
+  # 场景2：用户指定了模糊风格
+  vague_style_found:
+    - 必须引导用户澄清具体含义
+    - 提供2-3个最接近的预定义风格选项
+    - 避免猜测，确保明确理解
+  
+  # 场景3：用户未指定风格
+  no_style_found:
+    - 基于内容主题、情感基调、视频类型自动推荐
+    - 计算推荐置信度
+    - 根据置信度决定下一步操作
+```
+
+**阶段3：置信度驱动的用户交互**
+```yaml
+# 置信度决策规则（强制执行）
+confidence_based_interaction:
+  high_confidence: "总置信度 > 80% → 自动应用推荐风格，询问用户确认"
+  medium_confidence: "总置信度 50-80% → 提供推荐选项，让用户选择"
+  low_confidence: "总置信度 < 50% → 必须停止，请求用户明确指定风格"
+  
+# 模糊风格处理（强制执行）
+vague_style_handling:
+  cool: "请具体说明：是科技感（cyberpunk）还是现代感（modern minimalist）？"
+  modern: "请具体说明：是现代极简（minimalist）还是现代科技（tech）？"
+  professional: "请具体说明：是专业极简（minimalist）还是商业风（corporate graphic）？"
+  creative: "请具体说明：是艺术抽象（abstract）还是手绘创意（illustrative）？"
+  elegant: "请具体说明：是典雅中国风（chinese）还是简约和风（japanese minimalist）？"
+  
+# 主动推荐策略
+proactive_recommendation:
+  triggers:
+    - 用户没有指定任何风格时
+    - 用户指定了模糊风格需要澄清时
+    - 内容主题非常明确时（如"量子物理"→cyberpunk）
+  format: "基于您的[内容主题/情感基调/视频类型]，我推荐使用**[风格名称]**风格，理由：[匹配说明]"
+```
+
+**阶段4：风格冲突检测与解决**
+- 检测不合理组合（如chinese + cyberpunk、classical + vaporwave）
+- 自动警告并建议调整方案
+- 向用户说明冲突，请求选择主导风格
+
+**阶段5：最终确认与映射**
+- 用户确认风格选择后，应用完整的风格映射
+- 将风格定义映射到视觉元素、色彩、排版、动画
+- 集成到YAML模板的`style_definition`部分
+
+**强制约束**：
+1. **自动识别**：用户未指定风格时必须通过文本自动识别推荐
+2. **无法判断时停止**：置信度<50%时必须停止并让用户确认
+3. **模糊风格引导**：用户提出泛风格时必须引导澄清，避免误解
+4. **主动推荐**：在适当时机主动给出推荐建议
+5. **风格冲突检测**：自动检测不合理风格组合并解决
+
+**使用方式**：在 YAML 模板中定义 `style_definition`，系统自动映射到视觉元素。
+
+**示例**：
+```yaml
+style_definition:
+  cultural_style: "chinese"
+  era_style: "modern"
+  genre_style: "minimalist"
+  style_rationale: "用中国传统美学（水墨、留白）结合现代极简设计，传递传统文化的现代诠释"
+```
+
+详见：[style-knowledge-base.md](style-knowledge-base.md)、[style-examples.md](style-examples.md) 和完整的决策流程在 [director-decision-framework.md](director-decision-framework.md)
 
 ## Common Mistakes
 
@@ -92,6 +195,12 @@ See [quick-start-guide.md](quick-start-guide.md) for workflow and [director-deci
 12. **Inconsistent animation timing** → Jarring transitions between different easing curves
 13. **Neglecting visual motifs** → Missing recurring elements that create brand identity
 14. **Mismatched visual complexity** → Simple and complex visuals mixed without narrative reason
+15. **Ignoring style constraints** → Failing to follow mandatory style handling workflow
+16. **Guessing vague styles** → Applying style without clarifying ambiguous user requests
+17. **Skipping confidence check** → Proceeding with low-confidence style recommendations
+18. **Missing style conflict detection** → Using incompatible style combinations without warning
+19. **Not providing proactive recommendations** → Failing to suggest styles when user doesn't specify
+20. **Bypassing user confirmation** → Applying styles without proper user validation
 
 ## Universal Animation Vocabulary (Quick Reference)
 

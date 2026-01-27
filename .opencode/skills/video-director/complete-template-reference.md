@@ -41,6 +41,60 @@ video_director_framework:
       # 情感旅程：痛点共鸣 → 解决方案兴奋 → 信任建立 → 行动呼吁
       # 风格定位：minimalist with clean typography
       # 关键隐喻：时间流动，健康数据可视化
+
+    # ===== Video Style Definition (NEW) =====
+    style_definition:
+      # === 决策辅助 ===
+      # 视频风格是一个多维度概念，支持单风格或多风格组合
+      #
+      # 风格维度：
+      # 1. cultural_style: 文化风格 (chinese, japanese, korean, western, arabic, african, latino)
+      # 2. era_style: 时代风格 (classical, modern, future, retro, steampunk)
+      # 3. genre_style: 流派风格 (minimalist, cyberpunk, vaporwave, pop_art, abstract, hyper_realistic, cartoon)
+      #
+      # 风格映射：根据 style_definition 自动映射到 visual_art 的 color_palette, visual_elements, typography, motion_design
+      # 详细映射规则见：style-knowledge-base.md
+      #
+      # 示例1：现代中国风
+      # cultural_style: "chinese"
+      # era_style: "modern"
+      # genre_style: "minimalist"
+      # style_rationale: "用中国传统美学（水墨、留白）结合现代极简设计，传递传统文化的现代诠释"
+      #
+      # 示例2：赛博朋克
+      # cultural_style: "western" (或留空)
+      # era_style: "future"
+      # genre_style: "cyberpunk"
+      # style_rationale: "用赛博朋克的霓虹美学和故障艺术，传递科技未来的反乌托邦感"
+      #
+      # 示例3：和风治愈
+      # cultural_style: "japanese"
+      # era_style: "modern"
+      # genre_style: "minimalist"
+      # style_rationale: "用和风的极简禅意和樱花元素，营造治愈放松的氛围"
+      #
+      # 决策逻辑：
+      # - 风格定义影响 visual_art.color_palette (从风格映射表获取配色)
+      # - 风格定义影响 visual_art.visual_elements (从风格映射表获取视觉元素)
+      # - 风格定义影响 typography (从风格映射表获取字体建议)
+      # - 风格定义影响 motion_design (从风格映射表获取动画风格)
+      #
+      # 关联字段：
+      # - 影响：visual_art.cinematic_style.color_palette
+      # - 影响：visual_art.cinematic_style.texture_and_grain
+      # - 影响：visual_art.typography
+      # - 影响：visual_art.motion_design
+      #
+      # 重要说明：
+      # - 风格系统与现有 visual_aesthetic 字段并存，向后兼容
+      # - 如果定义了 style_definition，会覆盖 visual_art 中的部分字段
+      # - 如果未定义 style_definition，使用现有 visual_aesthetic 逻辑
+      # - 支持风格冲突检测：chinese + cyberpunk 等不合理组合会警告
+      #
+      cultural_style: "chinese / japanese / korean / western / arabic / african / latino (文化风格，可选)"
+      era_style: "classical / modern / future / retro / steampunk (时代风格，可选)"
+      genre_style: "minimalist / cyberpunk / vaporwave / pop_art / abstract / hyper_realistic / cartoon (流派风格，可选)"
+      style_rationale: "为什么选择这个/这些风格？如何支持creative_vision？(必需)"
     
     # ===== Target Audience Analysis =====
     target_audience:
@@ -420,9 +474,24 @@ video_director_framework:
       #   影响：rendering 需要高性能
       #
       visual_aesthetic: "cinematic/graphic/illustrative/flat/minimalist/tech/hyper-realistic"
-      
+
+      # ===== Style Integration (NEW) =====
+      # 如果 director_vision.style_definition 已定义，以下字段将根据风格映射自动生成
+      # 详细映射规则见：style-knowledge-base.md
+      #
+      # 风格映射示例：
+      # style_definition: { cultural_style: "chinese", era_style: "modern", genre_style: "minimalist" }
+      #   → 自动生成以下 color_palette, visual_elements, texture_and_grain, lighting_philosophy
+      #
+      # 如果未定义 style_definition，使用传统逻辑（基于 emotional_tone）
+      #
+      style_integration: |
+        根据style_definition自动映射风格元素：
+        - 如果定义了cultural_style/era_style/genre_style，从style-knowledge-base.md获取映射
+        - 如果未定义，使用传统emotional_tone → color_palette映射
+        - 风格映射优先级高于传统映射
       color_palette:
-        # === 决策辅助 ===
+        # === 决策辅助（传统模式）===
         # 根据 emotional_tone 从决策树选择配色方案
         #
         # inspiring → teal (#00bfff) + orange (#ff6b35) + dark blue (#001f3f)
@@ -450,7 +519,24 @@ video_director_framework:
         #   pink: 可爱、活泼、友好
         #   cyan: 科技、现代、清新
         #
-        # 决策逻辑：从决策树的 step2_emotion_design 选择
+        # === 风格映射模式（如果定义了style_definition）===
+        # 根据style_definition从style-knowledge-base.md获取配色
+        #
+        # 示例（中国风）：
+        # primary_colors: ["#C41E3A (中国红)", "#8B0000 (深红)", "#000000 (水墨黑)"]
+        # secondary_colors: ["#FFD700 (金)", "#2F4F4F (深青)", "#87CEEB (天青)", "#FFEFD5 (宣纸白)"]
+        #
+        # 示例（赛博朋克）：
+        # primary_colors: ["#00FFFF (赛博青)", "#FF00FF (霓虹粉)", "#000000 (深黑)"]
+        # secondary_colors: ["#1a1a2e (深紫蓝)", "#16213e (深蓝)", "#FF4500 (橙红)"]
+        #
+        # 示例（和风）：
+        # primary_colors: ["#FFB7C5 (樱花粉)", "#FFFFFF (白)", "#F0F0F0 (灰白)"]
+        # secondary_colors: ["#5B7C99 (蓝绿)", "#FFD700 (金)", "#8B4513 (棕)"]
+        #
+        # 决策逻辑：
+        # - 优先使用 style_definition 的风格映射
+        # - 如果未定义，使用 emotional_tone 的传统映射
         # 关联字段：必须与 audio_design.musical_score 一致
         #
         # 情感映射说明：
@@ -460,13 +546,39 @@ video_director_framework:
         # emotional_mapping: 记录每种颜色对应的情感（用于审核检查）
         # progression_arc: 颜色如何在视频中演化（开场→发展→高潮→结束）
         #
-        primary_colors: "2-3 dominant colors (specify HEX codes)"
-        secondary_colors: "Accent and highlight colors (2-3 accent colors)"
+        primary_colors: "2-3 dominant colors (specify HEX codes, or use style mapping)"
+        secondary_colors: "Accent and highlight colors (2-3 accent colors, or use style mapping)"
         emotional_mapping: "How colors support narrative emotions (map each color to emotion)"
         progression_arc: "Color evolution through video (e.g., dark → bright → calm → accent)"
-      
-      texture_and_grain: "Visual texture treatment"
-      lighting_philosophy: "Lighting style and mood creation"
+
+      # ===== Visual Elements (NEW) =====
+      # 如果定义了 style_definition，从风格映射获取视觉元素
+      # 如果未定义，保持空或手动定义
+      visual_elements:
+        # === 风格映射模式 ===
+        # 根据style_definition从style-knowledge-base.md获取视觉元素
+        #
+        # 示例（中国风）：
+        # motifs: ["祥云", "龙凤", "牡丹", "竹子", "荷花", "山水", "书法笔触"]
+        # textures: ["宣纸纹理", "水墨晕染", "绢布质感"]
+        # composition: ["对称构图", "留白艺术", "流动线条"]
+        #
+        # 示例（赛博朋克）：
+        # motifs: ["霓虹灯", "全息投影", "机械义肢", "雨夜", "电路板", "数据流"]
+        # textures: ["霓虹光晕", "扫描线", "故障效果", "金属质感"]
+        # composition: ["高对比度", "倾斜角度", "多视点", "拥挤城市景观"]
+        #
+        # 示例（和风）：
+        # motifs: ["樱花", "波浪纹", "富士山", "浮世绘线条", "几何图案"]
+        # textures: ["和纸纹理", "渐变色彩", "细线纹理"]
+        # composition: ["极简构图", "负空间利用", "不对称平衡"]
+        #
+        motifs: "视觉图案和母题（从风格映射获取，或手动定义）"
+        textures: "视觉质感和纹理（从风格映射获取，或手动定义）"
+        composition: "构图策略和原则（从风格映射获取，或手动定义）"
+
+      texture_and_grain: "Visual texture treatment (or use style mapping)"
+      lighting_philosophy: "Lighting style and mood creation (or use style mapping)"
       depth_strategy: "Foreground/midground/background relationships"
     
     # ===== Composition & Framing =====
@@ -483,18 +595,71 @@ video_director_framework:
     
     # ===== Motion Design (通用动画词汇) =====
     motion_design:
+      # ===== Style Integration (NEW) =====
+      # 如果定义了 style_definition，从风格映射获取动画风格
+      # 如果未定义，使用传统逻辑（根据情感基调选择）
+      #
+      # 风格映射示例：
+      # style_definition: { cultural_style: "chinese", genre_style: "minimalist" }
+      #   → animation_style: "smooth with gentle flow"
+      #   → easing_vocabulary: ["ease-in-out", "gentle ease"]
+      #   → transition_language: ["fade", "dissolve", "ink dissolve"]
+      #
+      # style_definition: { genre_style: "cyberpunk" }
+      #   → animation_style: "dynamic with glitch effects"
+      #   → easing_vocabulary: ["snap", "elastic", "anticipate"]
+      #   → transition_language: ["glitch", "digital wipe", "pixel dissolve"]
+      #
+      # style_definition: { cultural_style: "japanese" }
+      #   → animation_style: "slow and deliberate"
+      #   → easing_vocabulary: ["gentle ease", "linear"]
+      #   → transition_language: ["fade", "slide", "soft wipe"]
+      #
       # 全局动画风格
-      animation_style: "Motion characteristics and timing"
-      
+      # === 决策辅助（传统模式）===
+      # 根据情感基调选择动画风格
+      #
+      # inspiring → dynamic with particle effects（动感+粒子效果）
+      # calm → slow and smooth（缓慢流畅）
+      # suspense → sharp cuts with timing accents（节奏+强调）
+      # professional → clean geometric with consistent rhythm（精确几何）
+      # playful → bouncy with character movements（弹跳+角色）
+      #
+      # === 风格映射模式 ===
+      # 根据style_definition从style-knowledge-base.md获取动画风格
+      #
+      # 中国风 + 极简 → smooth with gentle flow
+      # 赛博朋克 → dynamic with glitch effects
+      # 和风 → slow and deliberate
+      # 卡通 → bouncy and energetic
+      #
+      animation_style: "Motion characteristics and timing (or use style mapping)"
+
       # 缓动策略（通用描述）
+      # === 风格映射模式 ===
+      # 根据style_definition从style-knowledge-base.md获取缓动词汇
+      #
+      # 中国风 → ease-in-out, gentle ease
+      # 赛博朋克 → snap, elastic, anticipate
+      # 和风 → gentle ease, linear
+      # 极简 → linear, smooth
+      #
       easing_vocabulary:
         - "linear: 匀速运动，机械感"
         - "smooth: 平滑加减速，自然感"
         - "spring: 弹性回弹，活泼感"
         - "bounce: 弹跳效果，趣味感"
         - "dramatic: 强烈对比，冲击感"
-      
+
       # 转场语言（通用描述）
+      # === 风格映射模式 ===
+      # 根据style_definition从style-knowledge-base.md获取转场语言
+      #
+      # 中国风 → fade, dissolve, ink dissolve (水墨溶解)
+      # 赛博朋克 → glitch, digital wipe, pixel dissolve
+      # 和风 → fade, slide, soft wipe
+      # 极简 → cut, fade
+      #
       transition_language:
         - "cut: 直接切换，干净利落"
         - "fade: 淡入淡出，柔和过渡"
@@ -503,16 +668,50 @@ video_director_framework:
         - "slide: 滑动切换，空间感"
         - "zoom: 缩放转场，聚焦感"
         - "match_cut: 匹配剪接，关联感"
-      
+
       # 视差深度
       parallax_depth: "Layered movement for depth"
     
     # ===== Typography & Graphic Design =====
     typography:
+      # ===== Style Integration (NEW) =====
+      # 如果定义了 style_definition，从风格映射获取字体建议
+      # 如果未定义，使用传统逻辑（根据视频类型选择）
+      #
+      # 风格映射示例：
+      # style_definition: { cultural_style: "chinese" }
+      #   → primary_font: "方正舒体 / 汉仪行楷"
+      #   → secondary_font: "思源宋体"
+      #
+      # style_definition: { genre_style: "cyberpunk" }
+      #   → primary_font: "Orbitron / Rajdhani (英文科技感)"
+      #   → secondary_font: "Roboto / 思源黑体"
+      #
+      # style_definition: { cultural_style: "japanese" }
+      #   → primary_font: "游明朝体 / 思源明朝体"
+      #   → secondary_font: "Noto Sans JP / 思源黑体"
+      #
       font_system:
-        primary_font: "Headlines and emphasis"
-        secondary_font: "Body text and information"
-        font_pairing_rationale: "Why these fonts work together"
+        # === 决策辅助（传统模式）===
+        # 根据视频类型和情感基调选择字体
+        #
+        # educational → 清晰易读的无衬线字体
+        # commercial → 现代专业的无衬线字体
+        # tutorial → 清晰的等宽或无衬线字体
+        # documentary → 经典衬线字体或现代无衬线
+        #
+        # === 风格映射模式 ===
+        # 根据style_definition从style-knowledge-base.md获取字体
+        #
+        # 中国风 → 衬线中文书法体 + 宋体
+        # 和风 → 明朝体 + 黑体
+        # 赛博朋克 → 科技感英文 + 无衬线体
+        # 极简 → 细线无衬线体
+        # 卡通 → 卡通字体
+        #
+        primary_font: "Headlines and emphasis (or use style mapping)"
+        secondary_font: "Body text and information (or use style mapping)"
+        font_pairing_rationale: "Why these fonts work together (or use style mapping)"
       
       text_animation: "How text enters, emphasizes, exits"
       information_hierarchy: "Visual prioritization of text elements"
