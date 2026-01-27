@@ -1,9 +1,9 @@
 ---
-name: video-director-production-framework
+name: video-director
 description: Use when user provides video script/theme and needs structured production plan with scenes, audio, visual design, and quality checkpoints for professional video production
 ---
 
-# Video Director Production Framework
+# Video Director
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# 基于 Remotion 视频制作模板
+# 非 DEMO 级 Remotion 视频制作-模板
 
 ## 快速开始
 
@@ -32,6 +32,29 @@ npx skills add remotion-dev/skills
 ## 详细指南
 - [AGENTS.md](./AGENTS.md) - AI 助手工作流程
 - [MiniMax MCP 官方指南](https://platform.minimaxi.com/docs/guides/mcp-guide)
+
+## 特性
+
+- **高可用性**：非 DEMO 级模板，可直接用于生产环境
+- **AI 驱动工作流**：基于 AGENTS.md 规范，自动化视频制作全流程
+- **一步到位实现**：完整支持 Canvas 粒子系统、Three.js 3D、Lottie 动画、SVG 动画等高级技术
+- **自动化素材生成**：集成 MiniMax MCP 和 baoyu-skills，自动生成音频和图像素材
+- **质量保证**：内置质量检查流程和验证脚本
+- **三层文档体系**：AGENTS.md（工作流程）+ TECH_GUIDE.md（技术细节）+ templates/（实现方案）
+
+## 是什么 & 不是什么
+
+### ✅ 是什么
+- 一个**生产级** Remotion 视频制作模板
+- **AI 辅助**的高效视频开发工作流
+- **完整实现**复杂视觉效果的技术方案
+- **自动化**素材生成和验证的完整工具链
+
+### ❌ 不是什么
+- **不是**教学性质的 DEMO 项目
+- **不是**需要手动处理每个细节的低效方案
+- **不是**简化版的实现示例
+- **不是**只能处理简单场景的工具
 
 ## 常见问题
 - **chrome-headless-shell下载失败: 手动下载:https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.35/mac-x64/chrome-headless-shell-mac-x64.zip 后，改名解压缩到 node_modules/.remotion/chrome-headless-shell
