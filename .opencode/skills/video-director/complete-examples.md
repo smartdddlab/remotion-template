@@ -392,5 +392,5 @@ video_director_framework:
 
 3. **色彩策略**：warm golden（开场吸引）→ cool teal（科学理性）→ warm orange（能量释放）→ golden（温暖收尾），色彩随情感和内容变化。
 
-4. **Remotion 可行性**：所有设计元素都在 Remotion 支持范围内，包括 spring 动画、溶解转场、分层景深模拟等。
+4. **Technical Feasibility** (参考 Remotion 验证)：所有设计元素都在主流动画平台支持范围内，包括 spring 动画、溶解转场、分层景深模拟等。
 

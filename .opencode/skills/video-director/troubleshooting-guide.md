@@ -71,7 +71,7 @@ You've been creating videos with solid structure but monotone visual design - bl
 3. **Update production_notes** with visual-specific guidance
 4. **Enhance script visual descriptions** with composition details
 
-#### Phase 4: Implement in Remotion
+#### Phase 4: Technical Implementation
 - **Backgrounds**: Replace solid colors with gradients, textures, or dynamic backgrounds
 - **Color application**: Use defined palette consistently across components
 - **Animation refinement**: Apply easing curves and timing from motion_design
@@ -128,6 +128,72 @@ You've been creating videos with solid structure but monotone visual design - bl
 - **Component library**: Build reusable styled components for consistency
 - **Regular audits**: Review videos for visual coherence quarterly
 - **Feedback loop**: Test with target audience for visual comprehension
+
+## Style System Troubleshooting
+
+The enhanced style system (v5.2+) introduces intelligent style handling with confidence calculation, conflict resolution, and vague style clarification. Here are common issues and solutions:
+
+### Confidence Calculation Issues
+| Issue | Solution |
+|-------|----------|
+| **Low confidence scores (<50%)** | System cannot decide style automatically. Must ask user for explicit style specification. |
+| **Inconsistent confidence across dimensions** | Check keyword_match (40%), content_relevance (25%), emotion_alignment (20%), video_type_fit (15%) weights. |
+| **High confidence but wrong style** | Verify content analysis: topic, emotional tone, video type. Adjust weights if needed. |
+
+### Style Conflict Resolution
+| Issue | Solution |
+|-------|----------|
+| **Cultural-Era conflicts** (e.g., Chinese + Cyberpunk) | Use priority: cultural_style > era_style > genre_style. Keep cultural style, adjust era/style. |
+| **Era-Genre conflicts** (e.g., Classical + Vaporwave) | Analyze content depth: shallow content → simpler style, deep content → complex style. |
+| **Genre-Content conflicts** (e.g., Minimalist + Complex topic) | Adjust style complexity based on content depth and target audience. |
+| **Multiple conflicts detected** | Resolve critical conflicts first, then major, then moderate, then minor. |
+
+### Vague Style Handling Issues
+| Issue | Solution |
+|-------|----------|
+| **User says "cool" or "modern"** | Must clarify: provide 2-3 specific style options (e.g., "Do you mean cyberpunk tech or modern minimalist?") |
+| **User says "professional" or "creative"** | Ask for visual examples or describe specific visual characteristics. |
+| **User refuses to clarify** | Cannot proceed. Stop and explain: "I need specific style to create consistent visual design." |
+| **Vague term not in dictionary** | Ask user to describe visual characteristics: colors, shapes, mood, cultural references. |
+
+### Baoyu-Skills Mapping Issues
+| Issue | Solution |
+|-------|----------|
+| **Style not mapping to Baoyu-skill** | Check `style-knowledge-base.md` for correct mapping. Add missing mappings if needed. |
+| **Incorrect Baoyu parameters** | Verify parameter mapping table in `style-knowledge-base.md`. |
+| **Baoyu-skill not available** | Use alternative skill mapping from `style-knowledge-base.md` fallback table. |
+| **Generated images don't match style** | Check Baoyu-skill parameters and adjust style_weight, color_palette, visual_elements. |
+
+### Style Definition Validation
+| Issue | Solution |
+|-------|----------|
+| **Missing required fields** | `style_definition` must have at least one of: cultural_style, era_style, genre_style |
+| **Invalid style values** | Check allowed values in `style-knowledge-base.md`: cultural_style (7 values), era_style (5), genre_style (7) |
+| **Style rationale missing** | Always include `style_rationale` to explain why this style fits the content |
+| **Backward compatibility issues** | Old `visual_aesthetic` field still works. System maps it to new style system. |
+
+### Automatic Mapping Problems
+| Issue | Solution |
+|-------|----------|
+| **Colors not mapping correctly** | Check `style-knowledge-base.md` color palette mapping for each style |
+| **Typography mapping wrong** | Verify font mapping table in `style-knowledge-base.md` |
+| **Motion design not applied** | Check motion design mapping for each style in knowledge base |
+| **Visual elements missing** | Ensure visual_elements mapping includes all required motifs for the style |
+
+### User Experience Issues
+| Issue | Solution |
+|-------|----------|
+| **Too many clarification questions** | Batch questions: ask about visual, emotional, functional dimensions together |
+| **User confused by style options** | Provide visual examples or descriptions for each option |
+| **Style recommendations seem random** | Explain reasoning: "Based on your content about [topic], I recommend [style] because [reason]" |
+| **User wants custom style not in system** | Offer closest existing styles, or document new style for future addition |
+
+### Performance Issues
+| Issue | Solution |
+|-------|----------|
+| **Style calculation too slow** | Cache style analysis results for similar content |
+| **Conflict detection expensive** | Pre-compute common conflict patterns |
+| **Baoyu-skill mapping slow** | Cache mapping results |
 
 ### When to Seek Additional Help
 - Complex 3D visualizations

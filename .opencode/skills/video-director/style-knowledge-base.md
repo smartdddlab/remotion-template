@@ -1,4 +1,5 @@
 # Video Style Framework
+
 # 视频风格框架 - 扩展video-director以支持文化、时代、流派风格
 
 ---
@@ -8,53 +9,57 @@
 视频风格是一个**多维度**概念，包含三个独立维度：
 
 ### 维度1：文化风格 (Cultural Styles)
+
 **定义**：基于地域文化传统的视觉语言特征
 
-| 风格名称 | 特征描述 | 典型元素 | 色彩倾向 | 字体建议 |
-|---------|---------|---------|---------|---------|
-| **中国风 (Chinese)** | 传统文化美学、水墨意境、祥瑞纹样 | 山水、龙凤、祥云、牡丹、竹、水墨笔触、书法线条 | 红金、水墨黑白、青绿、暖黄 | 衬线中文书法体（方正舒体、汉仪行楷） |
-| **和风 (Japanese)** | 极简禅意、自然主义、浮世绘美学 | 樱花、波浪纹、浮世绘线条、几何图案、和风配色 | 粉白、蓝绿、红金、大地色 | 明朝体、圆角黑体 |
-| **韩风 (Korean)** | 温柔典雅、现代融合、简洁几何 | 传统纹样、曲线、柔和渐变、现代极简 | 粉彩、白金、大地色 | 现代无衬线+细线 |
-| **欧美风 (Western)** | 写实主义、大胆对比、摄影美学 | 摄影质感、几何构图、高对比度、电影调色 | 互补色、高饱和度 | 无衬线体（Helvetica, Roboto） |
-| **阿拉伯风 (Arabic)** | 几何纹样、金箔装饰、书法艺术 | 几何图案、阿拉伯书法、拱门、星形、金箔装饰 | 蓝金、绿银、红铜 | 阿拉伯书法体 |
-| **非洲风 (African)** | 大地色彩、部落纹样、手工艺感 | 部落图案、木刻纹理、自然元素、大地色块 | 赭石、橙黄、深绿、黑 | 手写风格 |
-| **拉丁美洲风 (Latino)** | 鲜艳色彩、马赛克、民间艺术 | 马赛克、民间图案、植物纹理、明亮对比 | 鲜艳红黄、蓝绿、紫 | 手绘风格 |
+| 风格名称                | 特征描述                         | 典型元素                                       | 色彩倾向                   | 字体建议                             |
+| ----------------------- | -------------------------------- | ---------------------------------------------- | -------------------------- | ------------------------------------ |
+| **中国风 (Chinese)**    | 传统文化美学、水墨意境、祥瑞纹样 | 山水、龙凤、祥云、牡丹、竹、水墨笔触、书法线条 | 红金、水墨黑白、青绿、暖黄 | 衬线中文书法体（方正舒体、汉仪行楷） |
+| **和风 (Japanese)**     | 极简禅意、自然主义、浮世绘美学   | 樱花、波浪纹、浮世绘线条、几何图案、和风配色   | 粉白、蓝绿、红金、大地色   | 明朝体、圆角黑体                     |
+| **韩风 (Korean)**       | 温柔典雅、现代融合、简洁几何     | 传统纹样、曲线、柔和渐变、现代极简             | 粉彩、白金、大地色         | 现代无衬线+细线                      |
+| **欧美风 (Western)**    | 写实主义、大胆对比、摄影美学     | 摄影质感、几何构图、高对比度、电影调色         | 互补色、高饱和度           | 无衬线体（Helvetica, Roboto）        |
+| **阿拉伯风 (Arabic)**   | 几何纹样、金箔装饰、书法艺术     | 几何图案、阿拉伯书法、拱门、星形、金箔装饰     | 蓝金、绿银、红铜           | 阿拉伯书法体                         |
+| **非洲风 (African)**    | 大地色彩、部落纹样、手工艺感     | 部落图案、木刻纹理、自然元素、大地色块         | 赭石、橙黄、深绿、黑       | 手写风格                             |
+| **拉丁美洲风 (Latino)** | 鲜艳色彩、马赛克、民间艺术       | 马赛克、民间图案、植物纹理、明亮对比           | 鲜艳红黄、蓝绿、紫         | 手绘风格                             |
 
 ### 维度2：时代风格 (Era Styles)
+
 **定义**：基于历史时期的视觉审美特征
 
-| 风格名称 | 特征描述 | 典型元素 | 色彩倾向 | 字体建议 |
-|---------|---------|---------|---------|---------|
-| **古典 (Classical)** | 传统美学、对称构图、精致细节 | 雕刻、古典建筑、油画质感、衬线装饰 | 深红、金、棕、黑 | 衬线体（Times New Roman, 宋体） |
-| **现代 (Modern)** | 功能主义、几何简洁、工业化 | 几何形状、网格系统、无衬线字体 | 白灰黑+单色强调 | 无衬线体（Helvetica, 思源黑体） |
-| **未来 (Future)** | 科技感、抽象几何、霓虹光影 | 线框、全息、粒子、渐变、玻璃态 | 霓虹色、赛博蓝紫、金属银 | 未来感无衬线体 |
-| **复古 (Retro)** | 怀旧美学、怀旧质感、复古配乐 | 胶片颗粒、复古滤镜、老物件、唱片机 | 复古棕、暖黄、褪色蓝 | 复古衬线体 |
-| **蒸汽朋克 (Steampunk)** | 维多利亚机械、黄铜齿轮、蒸汽美学 | 齿轮、蒸汽、黄铜、皮革、机械结构 | 棕黄、铜色、灰、深红 | 机械风格衬线体 |
+| 风格名称                 | 特征描述                         | 典型元素                           | 色彩倾向                 | 字体建议                        |
+| ------------------------ | -------------------------------- | ---------------------------------- | ------------------------ | ------------------------------- |
+| **古典 (Classical)**     | 传统美学、对称构图、精致细节     | 雕刻、古典建筑、油画质感、衬线装饰 | 深红、金、棕、黑         | 衬线体（Times New Roman, 宋体） |
+| **现代 (Modern)**        | 功能主义、几何简洁、工业化       | 几何形状、网格系统、无衬线字体     | 白灰黑+单色强调          | 无衬线体（Helvetica, 思源黑体） |
+| **未来 (Future)**        | 科技感、抽象几何、霓虹光影       | 线框、全息、粒子、渐变、玻璃态     | 霓虹色、赛博蓝紫、金属银 | 未来感无衬线体                  |
+| **复古 (Retro)**         | 怀旧美学、怀旧质感、复古配乐     | 胶片颗粒、复古滤镜、老物件、唱片机 | 复古棕、暖黄、褪色蓝     | 复古衬线体                      |
+| **蒸汽朋克 (Steampunk)** | 维多利亚机械、黄铜齿轮、蒸汽美学 | 齿轮、蒸汽、黄铜、皮革、机械结构   | 棕黄、铜色、灰、深红     | 机械风格衬线体                  |
 
 ### 维度3：流派风格 (Genre Styles)
+
 **定义**：基于艺术流派的视觉表达特征
 
-| 风格名称 | 特征描述 | 典型元素 | 色彩倾向 | 字体建议 |
-|---------|---------|---------|---------|---------|
-| **极简 (Minimalist)** | 大量留白、简化元素、单一焦点 | 几何形状、纯色块、极简图标 | 单色+1-2强调色 | 细线无衬线体 |
-| **赛博朋克 (Cyberpunk)** | 高科技低生活、霓虹对比、反乌托邦 | 霓虹灯、全息投影、机械义肢、雨夜城市 | 霓虹粉、青、紫、深黑 | 科技感字体 |
-| **蒸汽波 (Vaporwave)** | 90年代怀旧、数字故障、希腊雕像 | 故障艺术、希腊雕塑、Windows95界面、粉紫渐变 | 粉紫、蓝绿、橙 | 复古像素字体 |
-| **波普 (Pop Art)** | 大众文化、波点、重复图案 | 波点、漫画线框、重复元素、名人肖像 | 高饱和对比色（红蓝黄） | 粗体无衬线 |
-| **抽象表现主义 (Abstract)** | 情感表达、非具象、色彩碰撞 | 泼墨、色块、线条、抽象形态 | 高对比度、互补色 | 手写风格 |
-| **超写实 (Hyper-realistic)** | 照片级细节、真实质感、精确光照 | 真实材质、高细节渲染、摄影质感 | 自然色彩 | 精细无衬线 |
-| **卡通/手绘 (Cartoon)** | 夸张表现、粗线条、鲜艳色彩 | 粗轮廓线、夸张表情、扁平色块 | 高饱和度 | 卡通字体 |
+| 风格名称                     | 特征描述                         | 典型元素                                    | 色彩倾向               | 字体建议     |
+| ---------------------------- | -------------------------------- | ------------------------------------------- | ---------------------- | ------------ |
+| **极简 (Minimalist)**        | 大量留白、简化元素、单一焦点     | 几何形状、纯色块、极简图标                  | 单色+1-2强调色         | 细线无衬线体 |
+| **赛博朋克 (Cyberpunk)**     | 高科技低生活、霓虹对比、反乌托邦 | 霓虹灯、全息投影、机械义肢、雨夜城市        | 霓虹粉、青、紫、深黑   | 科技感字体   |
+| **蒸汽波 (Vaporwave)**       | 90年代怀旧、数字故障、希腊雕像   | 故障艺术、希腊雕塑、Windows95界面、粉紫渐变 | 粉紫、蓝绿、橙         | 复古像素字体 |
+| **波普 (Pop Art)**           | 大众文化、波点、重复图案         | 波点、漫画线框、重复元素、名人肖像          | 高饱和对比色（红蓝黄） | 粗体无衬线   |
+| **抽象表现主义 (Abstract)**  | 情感表达、非具象、色彩碰撞       | 泼墨、色块、线条、抽象形态                  | 高对比度、互补色       | 手写风格     |
+| **超写实 (Hyper-realistic)** | 照片级细节、真实质感、精确光照   | 真实材质、高细节渲染、摄影质感              | 自然色彩               | 精细无衬线   |
+| **卡通/手绘 (Cartoon)**      | 夸张表现、粗线条、鲜艳色彩       | 粗轮廓线、夸张表情、扁平色块                | 高饱和度               | 卡通字体     |
 
 ### 维度4：技术风格 (Technical Styles) - 现有
+
 **定义**：基于视觉表现技术风格的分类
 
-| 风格名称 | 特征描述 |
-|---------|---------|
-| **cinematic** | 电影感，深景深、动态照明、电影调色 |
-| **graphic** | 图形化，高对比度、清晰图标、扁平化 |
-| **illustrative** | 插画式，手绘风格、温暖色调、有机形态 |
-| **flat** | 扁平化，无阴影、纯色块、简洁几何 |
-| **minimalist** | 极简主义，大量留白、精确排版、有限色彩 |
-| **tech** | 科技感，霓虹、线条、粒子、数据可视化 |
+| 风格名称            | 特征描述                               |
+| ------------------- | -------------------------------------- |
+| **cinematic**       | 电影感，深景深、动态照明、电影调色     |
+| **graphic**         | 图形化，高对比度、清晰图标、扁平化     |
+| **illustrative**    | 插画式，手绘风格、温暖色调、有机形态   |
+| **flat**            | 扁平化，无阴影、纯色块、简洁几何       |
+| **minimalist**      | 极简主义，大量留白、精确排版、有限色彩 |
+| **tech**            | 科技感，霓虹、线条、粒子、数据可视化   |
 | **hyper-realistic** | 超写实，照片级质量、真实纹理、精确光照 |
 
 ---
@@ -64,12 +69,14 @@
 ### 映射规则（Style → Visual Elements）
 
 #### 中国风 (Chinese) 映射
+
 ```yaml
 chinese_style_mapping:
   visual_aesthetic: "cinematic with illustrative elements"
   color_palette:
     primary_colors: ["#C41E3A (中国红)", "#8B0000 (深红)", "#000000 (水墨黑)"]
-    secondary_colors: ["#FFD700 (金)", "#2F4F4F (深青)", "#87CEEB (天青)", "#FFEFD5 (宣纸白)"]
+    secondary_colors:
+      ["#FFD700 (金)", "#2F4F4F (深青)", "#87CEEB (天青)", "#FFEFD5 (宣纸白)"]
     emotional_mapping: |
       中国红: 吉祥、喜庆、热情
       金: 华贵、典雅、尊贵
@@ -93,12 +100,14 @@ chinese_style_mapping:
 ```
 
 #### 和风 (Japanese) 映射
+
 ```yaml
 japanese_style_mapping:
   visual_aesthetic: "minimalist with illustrative elements"
   color_palette:
     primary_colors: ["#FFB7C5 (樱花粉)", "#FFFFFF (白)", "#F0F0F0 (灰白)"]
-    secondary_colors: ["#5B7C99 (蓝绿)", "#FFD700 (金)", "#8B4513 (棕)", "#C0C0C0 (银)"]
+    secondary_colors:
+      ["#5B7C99 (蓝绿)", "#FFD700 (金)", "#8B4513 (棕)", "#C0C0C0 (银)"]
     emotional_mapping: |
       樱花粉: 温柔、浪漫、短暂之美
       白: 纯净、简洁、禅意
@@ -121,6 +130,7 @@ japanese_style_mapping:
 ```
 
 #### 赛博朋克 (Cyberpunk) 映射
+
 ```yaml
 cyberpunk_style_mapping:
   visual_aesthetic: "tech with cinematic elements"
@@ -238,27 +248,193 @@ style_recommendation_step:
 
 ## 💻 Baoyu-Skills集成
 
-### 图像生成风格映射
+### 图像生成风格映射（完整版）
 
-当使用baoyu-skills生成素材时，风格定义映射到图像生成参数：
+当使用baoyu-skills生成素材时，风格定义映射到图像生成参数。以下是完整的风格→Baoyu-skill映射表：
+
+#### 文化风格映射
 
 ```yaml
-# 风格 → 图像生成风格映射
+# 中国风 (Chinese)
 chinese → baoyu-article-illustrator:
-  style: "editorial" or "chalkboard"
-  elements: "traditional Chinese elements, ink wash style"
+  primary_skill: "baoyu-article-illustrator"
+  recommended_styles: ["editorial", "chalkboard", "watercolor"]
+  style_parameters: "traditional Chinese aesthetic, ink wash style, calligraphy"
+  elements: "ink brush strokes, traditional patterns, mountains-water motifs"
+  color_palette: "red-gold-black, ink wash tones, traditional Chinese colors"
+  confidence: "high"
 
-cyberpunk → baoyu-infographic:
-  style: "technical-schematic" or "bold-graphic"
-  elements: "neon lights, digital elements, future tech"
+  alternative_skills:
+    - "baoyu-infographic: style='bold-graphic' (现代中国风)"
+    - "baoyu-cover-image: style='elegant' (典雅封面)"
 
+# 和风 (Japanese)
+japanese → baoyu-article-illustrator:
+  primary_skill: "baoyu-article-illustrator"
+  recommended_styles: ["minimal", "watercolor", "elegant"]
+  style_parameters: "Japanese minimalism, zen aesthetic, nature elements"
+  elements: "cherry blossoms, wave patterns, Mount Fuji, zen circles"
+  color_palette: "pink-white, blue-green, gold-brown"
+  confidence: "high"
+
+  alternative_skills:
+    - "baoyu-infographic: style='kawaii' (可爱和风)"
+    - "baoyu-xhs-images: style='fresh' (清新和风)"
+
+# 韩风 (Korean)
+korean → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles: ["bold-graphic", "corporate-memphis"]
+  style_parameters: "modern Korean aesthetic, soft gradients, geometric patterns"
+  elements: "traditional Korean patterns, modern geometric shapes, soft curves"
+  color_palette: "pastel colors, white-gold, soft gradients"
+  confidence: "medium"
+
+# 欧美风 (Western)
+western → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles:
+    ["bold-graphic", "technical-schematic", "corporate-memphis"]
+  style_parameters: "Western graphic design, bold typography, photographic elements"
+  elements: "geometric shapes, bold lines, photographic textures"
+  color_palette: "complementary colors, high contrast, primary colors"
+  confidence: "high"
+```
+
+#### 时代风格映射
+
+```yaml
+# 古典风格 (Classical)
+classical → baoyu-article-illustrator:
+  primary_skill: "baoyu-article-illustrator"
+  recommended_styles: ["vintage", "elegant", "editorial"]
+  style_parameters: "classical aesthetic, traditional craftsmanship, historical elements"
+  elements: "classical architecture, oil painting texture, historical motifs"
+  color_palette: "deep reds, gold, brown, black"
+  confidence: "high"
+
+# 现代风格 (Modern)
+modern → baoyu-slide-deck:
+  primary_skill: "baoyu-slide-deck"
+  recommended_styles: ["notion", "bold-editorial", "clean"]
+  style_parameters: "modern design, clean lines, functional aesthetics"
+  elements: "geometric shapes, negative space, grid systems"
+  color_palette: "monochrome + accent color, white space, muted tones"
+  confidence: "high"
+
+# 未来风格 (Future)
+future → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles: ["technical-schematic", "cyberpunk-neon", "ui-wireframe"]
+  style_parameters: "futuristic tech, holographic elements, advanced interfaces"
+  elements: "wireframes, holograms, tech interfaces, particle effects"
+  color_palette: "neon colors, dark backgrounds, electric accents"
+  confidence: "high"
+
+# 复古风格 (Retro)
+retro → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles: ["retro", "vaporwave", "aged-academia"]
+  style_parameters: "retro aesthetic, vintage textures, nostalgic elements"
+  elements: "vintage typography, film grain, retro patterns"
+  color_palette: "washed-out colors, sepia tones, vintage palettes"
+  confidence: "high"
+```
+
+#### 流派风格映射
+
+```yaml
+# 极简主义 (Minimalist)
 minimalist → baoyu-slide-deck:
-  style: "notion" or "bold-editorial"
-  elements: "clean lines, geometric shapes, negative space"
+  primary_skill: "baoyu-slide-deck"
+  recommended_styles: ["notion", "clean", "minimal"]
+  style_parameters: "minimalist design, essential elements, maximum negative space"
+  elements: "simple geometric shapes, clean lines, ample white space"
+  color_palette: "limited color palette, monochrome, neutral tones"
+  confidence: "high"
 
+  alternative_skills:
+    - "baoyu-infographic: style='bold-graphic' (图形化极简)"
+    - "baoyu-cover-image: style='minimal' (极简封面)"
+
+# 赛博朋克 (Cyberpunk)
+cyberpunk → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles: ["cyberpunk-neon", "technical-schematic", "ui-wireframe"]
+  style_parameters: "cyberpunk aesthetic, neon dystopia, tech-noir"
+  elements: "neon lights, holograms, rain effects, cybernetic elements"
+  color_palette: "neon pink-cyan, dark purples, electric blues"
+  confidence: "high"
+
+  alternative_skills:
+    - "baoyu-article-illustrator: style='tech' (科技插画)"
+    - "baoyu-cover-image: style='dark' (暗黑封面)"
+
+# 蒸汽波 (Vaporwave)
+vaporwave → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles: ["vaporwave", "retro", "cyberpunk-neon"]
+  style_parameters: "vaporwave aesthetic, 90s nostalgia, digital surrealism"
+  elements: "Greek statues, Windows 95 UI, pink-purple gradients, glitch art"
+  color_palette: "pink-purple-teal, pastel gradients, retro colors"
+  confidence: "high"
+
+# 波普艺术 (Pop Art)
+pop_art → baoyu-infographic:
+  primary_skill: "baoyu-infographic"
+  recommended_styles: ["pop-art", "bold-graphic", "corporate-memphis"]
+  style_parameters: "pop art aesthetic, bold colors, commercial art style"
+  elements: "ben-day dots, comic book styles, celebrity portraits, bold outlines"
+  color_palette: "primary colors, high contrast, vibrant combinations"
+  confidence: "high"
+
+# 抽象表现主义 (Abstract)
+abstract → baoyu-article-illustrator:
+  primary_skill: "baoyu-article-illustrator"
+  recommended_styles: ["abstract", "experimental", "watercolor"]
+  style_parameters: "abstract expressionism, emotional colors, non-representational"
+  elements: "brush strokes, color fields, texture layers, geometric abstractions"
+  color_palette: "emotional colors, contrasting hues, textured tones"
+  confidence: "medium"
+
+# 卡通/手绘 (Cartoon)
 cartoon → baoyu-comic:
-  style: "classic" or "vibrant"
-  elements: "bold outlines, bright colors, expressive characters"
+  primary_skill: "baoyu-comic"
+  recommended_styles: ["classic", "vibrant", "manga", "shoujo"]
+  style_parameters: "cartoon aesthetic, exaggerated expressions, character focus"
+  elements: "bold outlines, expressive characters, simplified forms, speech bubbles"
+  color_palette: "bright colors, high saturation, character-specific palettes"
+  confidence: "high"
+
+  alternative_skills:
+    - "baoyu-article-illustrator: style='playful' (趣味插画)"
+    - "baoyu-xhs-images: style='cute' (可爱卡通)"
+```
+
+#### 多层映射策略
+
+```yaml
+# 一级映射：风格 → 主技能
+mapping_strategy:
+  priority_order: 1. "文化风格优先：cultural_style → 对应技能"
+    2. "流派风格次之：genre_style → 对应技能"
+    3. "时代风格辅助：era_style → 调整技能参数"
+    4. "技术风格实现：technical_style → 具体执行参数"
+
+  combination_rules:
+    - "单一风格：直接使用对应主技能"
+    - "混合风格：使用主风格技能，用次要风格调整参数"
+    - "冲突风格：选择优先级高的风格对应技能"
+    - "未定义风格：使用最接近的风格映射"
+
+# 备选映射表
+fallback_mapping:
+  # 当主技能不可用时使用备选
+  baoyu-article-illustrator: "baoyu-infographic (图形化替代)"
+  baoyu-infographic: "baoyu-slide-deck (演示替代)"
+  baoyu-slide-deck: "baoyu-cover-image (封面替代)"
+  baoyu-comic: "baoyu-article-illustrator (插画替代)"
+  baoyu-xhs-images: "baoyu-infographic (信息图替代)"
 ```
 
 ---
@@ -277,6 +453,7 @@ cartoon → baoyu-comic:
 ```
 
 ### style-knowledge-base.md 内容结构：
+
 1. 风格分类体系（本文件内容）
 2. 风格映射规则（chinese, japanese, cyberpunk等）
 3. Baoyu-skills集成规则
@@ -287,6 +464,7 @@ cartoon → baoyu-comic:
 ## 🎨 风格组合示例
 
 ### 示例1：现代中国风科普视频
+
 ```yaml
 style_definition:
   cultural_style: "chinese"
@@ -309,6 +487,7 @@ motion_design:
 ```
 
 ### 示例2：赛博朋克科技视频
+
 ```yaml
 style_definition:
   cultural_style: "western"  (或留空)
@@ -331,6 +510,7 @@ motion_design:
 ```
 
 ### 示例3：和风治愈视频
+
 ```yaml
 style_definition:
   cultural_style: "japanese"
@@ -357,21 +537,25 @@ motion_design:
 ## 🔄 实施计划
 
 ### Phase 1: 创建风格知识库（1天）
+
 - [ ] 创建 style-knowledge-base.md
 - [ ] 定义所有风格映射规则
 - [ ] 创建风格组合示例
 
 ### Phase 2: 更新主模板（0.5天）
+
 - [ ] 在 complete-template-reference.md 中添加 style_definition 字段
 - [ ] 更新 director-decision-framework.md 的决策树
 - [ ] 添加风格冲突检测逻辑
 
 ### Phase 3: 更新示例（0.5天）
+
 - [ ] 创建中国风视频示例
 - [ ] 创建赛博朋克视频示例
 - [ ] 创建和风视频示例
 
 ### Phase 4: 集成测试（1天）
+
 - [ ] 测试风格组合逻辑
 - [ ] 测试Baoyu-skills映射
 - [ ] 测试AI决策树推荐

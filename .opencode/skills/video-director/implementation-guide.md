@@ -1,4 +1,8 @@
-## Integration with Remotion
+## Remotion-Specific Implementation Guide
+
+**Note:** This guide provides implementation examples for the Remotion framework. The video-director skill itself is technology-agnostic and can be implemented with any animation platform.
+
+### Template Mapping for Remotion
 
 ### Template Mapping
 
@@ -25,6 +29,131 @@
 5. **File organization**: Keep all audio files in `public/` directory with clear naming (scene1.mp3, scene2.mp3)
 6. **Long video optimization**: For videos >3 minutes, implement chapter breaks and voice variations
 7. **Error prevention**: Run `npm run typecheck` before rendering to catch TypeScript errors
+
+## Style System Integration
+
+### Mapping Style Definitions to Remotion Components
+
+The enhanced style system (v5.2+) provides automatic mapping from `style_definition` to visual design tokens. Here's how to implement style mappings in Remotion:
+
+```typescript
+// Example: Chinese style implementation
+const chineseStyle = {
+  colors: {
+    primary: "#000000", // 水墨黑
+    secondary: "#FFFFFF", // 宣纸白
+    accent: "#FFD700", // 金
+  },
+  typography: {
+    primaryFont: "FZShuTi, HanYiXingKai",
+    secondaryFont: "SourceHanSerif, SimSun",
+  },
+  motion: {
+    easing: "ease-in-out",
+    transitions: ["fade", "dissolve", "ink dissolve"]
+  }
+};
+
+// Usage in component
+const ChineseScene: React.FC = () => {
+  return (
+    <AbsoluteFill style={{ 
+      backgroundColor: chineseStyle.colors.secondary,
+      backgroundImage: `url('/textures/rice-paper.png')`
+    }}>
+      <h1 style={{ 
+        fontFamily: chineseStyle.typography.primaryFont,
+        color: chineseStyle.colors.primary
+      }}>
+        中医文化
+      </h1>
+    </AbsoluteFill>
+  );
+};
+```
+
+### Automatic Style Mapping Process
+
+1. **Extract style definitions** from YAML's `style_definition` section
+2. **Map to design tokens** using `style-knowledge-base.md` mappings
+3. **Apply to components** through consistent prop patterns
+4. **Maintain consistency** across all scenes
+
+### Key Implementation Patterns
+
+#### 1. Style-Aware Component Factory
+```typescript
+const createStyledComponent = (styleDefinition: StyleDefinition) => {
+  const tokens = mapStyleToTokens(styleDefinition);
+  return (props: ComponentProps) => (
+    <div style={applyStyleTokens(tokens, props)}>
+      {props.children}
+    </div>
+  );
+};
+```
+
+#### 2. Dynamic Style Switching
+```typescript
+const SceneWrapper: React.FC<{style: StyleDefinition}> = ({ style, children }) => {
+  const styleContext = useMemo(() => createStyleContext(style), [style]);
+  return (
+    <StyleContext.Provider value={styleContext}>
+      {children}
+    </StyleContext.Provider>
+  );
+};
+```
+
+#### 3. Cross-Scene Consistency
+- Use React Context for style propagation
+- Create reusable style hooks: `useChineseStyle()`, `useCyberpunkStyle()`
+- Implement style validation to ensure consistency
+
+### Integration with Baoyu-Skills Image Generation
+
+The style system automatically maps to Baoyu-skill parameters:
+
+```yaml
+# Automatic mapping example
+style_definition:
+  cultural_style: "chinese"
+  era_style: "modern"
+  genre_style: "minimalist"
+
+# Maps to Baoyu-skill parameters:
+baoyu_skill: "baoyu-article-illustrator"
+baoyu_style: "tech/editorial/blueprint"
+baoyu_parameters:
+  color_palette: "black_white_gold"
+  visual_elements: ["ink wash", "traditional patterns"]
+```
+
+### Quality Assurance for Style Implementation
+
+Add to your quality checklist:
+
+- [ ] **Style definition present**: `style_definition` section exists in YAML
+- [ ] **Automatic mapping verified**: Check `visual_art` section for correct auto-mapping
+- [ ] **Cross-scene consistency**: Same style applied across all scenes
+- [ ] **Baoyu-skill mapping**: Verify correct Baoyu-skill and parameters
+- [ ] **Design token implementation**: Style tokens correctly implemented in components
+- [ ] **Accessibility compliance**: Color contrast meets 4.5:1 minimum ratio
+
+### Troubleshooting Style Implementation
+
+| Issue | Solution |
+|-------|----------|
+| Style not applying | Check `style_definition` format and field names |
+| Incorrect color mapping | Verify mapping in `style-knowledge-base.md` |
+| Inconsistent across scenes | Use Style Context or global style provider |
+| Baoyu-skill mismatch | Check `style-knowledge-base.md` for correct skill mapping |
+
+### Performance Considerations
+
+- **Style token caching**: Cache style tokens to avoid recalculation
+- **Lazy style loading**: Load style assets only when needed
+- **Bundle size optimization**: Tree-shake unused style definitions
 
 ## Quality Checklist
 
