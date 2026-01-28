@@ -1,10 +1,8 @@
-## Remotion-Specific Implementation Guide
+## Remotion专属实现指南
 
-**Note:** This guide provides implementation examples for the Remotion framework. The video-director skill itself is technology-agnostic and can be implemented with any animation platform.
+**注意：** 本指南提供Remotion框架的实现示例。video-director技能本身是技术无关的，可以在任何动画平台上实现。
 
-### Template Mapping for Remotion
-
-### Template Mapping
+### 模板映射（Remotion）
 
 ```typescript
 // Timecode to frames conversion (30fps)
@@ -20,21 +18,21 @@
 <Audio src={narrationAudio} />
 ```
 
-### Best Practices
+### 最佳实践
 
-1. **Multi-stage workflow**: Follow the 4-stage process (Planning → Audio → Code → Render)
-2. **Audio-driven timing**: Calculate frames based on actual audio durations: `durationInFrames = Math.ceil(audioDurationInSeconds × fps)`
-3. **Quality gates**: Pass each stage's quality checks before proceeding to next stage
-4. **Audio-visual sync**: Place Audio elements inside corresponding Sequences for proper synchronization
-5. **File organization**: Keep all audio files in `public/` directory with clear naming (scene1.mp3, scene2.mp3)
-6. **Long video optimization**: For videos >3 minutes, implement chapter breaks and voice variations
-7. **Error prevention**: Run `npm run typecheck` before rendering to catch TypeScript errors
+1. **多阶段工作流**：遵循4阶段流程（规划 → 音频 → 代码 → 渲染）
+2. **音频驱动时序**：根据实际音频时长计算帧数：`durationInFrames = Math.ceil(audioDurationInSeconds × fps)`
+3. **质量检查点**：通过每个阶段的质量检查后再进入下一阶段
+4. **音视频同步**：将音频元素放置在对应的Sequence中以确保正确同步
+5. **文件组织**：将所有音频文件保存在`public/`目录中，使用清晰的命名（scene1.mp3、scene2.mp3）
+6. **长视频优化**：对于超过3分钟的视频，实现章节分割和语音变化
+7. **错误预防**：在渲染前运行`npm run typecheck`以捕获TypeScript错误
 
-## Style System Integration
+## 风格系统集成
 
-### Mapping Style Definitions to Remotion Components
+### 风格定义到Remotion组件的映射
 
-The enhanced style system (v5.2+) provides automatic mapping from `style_definition` to visual design tokens. Here's how to implement style mappings in Remotion:
+增强的风格系统（v5.2+）提供从`style_definition`到视觉设计令牌的自动映射。以下是如何在Remotion中实现风格映射：
 
 ```typescript
 // Example: Chinese style implementation

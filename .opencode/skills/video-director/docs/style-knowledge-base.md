@@ -1,5 +1,3 @@
-# Video Style Framework
-
 # 视频风格框架 - 扩展video-director以支持文化、时代、流派风格
 
 ---

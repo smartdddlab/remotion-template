@@ -1,9 +1,8 @@
-# Complete Examples - Style Integration
 # 完整示例 - 风格集成
 
 ---
 
-## Example 4: Chinese Style Educational Video - Traditional Chinese Medicine (中国风科普视频 - 中医)
+## 示例4：中国风科普视频 - 中医
 
 **视频类型**：educational（科普中医知识）
 **情感基调**：inspiring（启发）
@@ -418,7 +417,7 @@ video_director_framework:
 
 ---
 
-## Example 5: Cyberpunk Style Tech Video - AI Revolution (赛博朋克科技视频 - AI革命)
+## 示例5：赛博朋克科技视频 - AI革命
 
 **视频类型**：educational（科普AI技术）
 **情感基调**：suspense → inspiring（悬疑→启发）
@@ -840,7 +839,7 @@ video_director_framework:
 
 ---
 
-## Example 6: Japanese Style Healing Video - Zen Meditation (和风治愈视频 - 禅意冥想)
+## 示例6：和风治愈视频 - 禅意冥想
 
 **视频类型**：educational（禅意冥想指导）
 **情感基调**：calm（平静）
