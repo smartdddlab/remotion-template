@@ -90,6 +90,89 @@ style_definition:
 - 实现灵活性
 - 质量一致性
 
+## 对抗式验证系统 (v6.0+)
+
+**强制约束：** 生成plan.yaml后，必须执行对抗式自检，未完成验证的文件视为不合格。
+
+### 验证流程
+
+```yaml
+验证步骤：
+1. 生成plan.yaml初稿
+2. 确定验证级别（simple/standard/complex）
+3. 执行分级对抗验证（1-3轮）
+4. 修订FAIL项并记录
+5. 计算置信度（≥85%方可通过）
+6. 输出validation-report.yaml
+```
+
+### 验证级别
+
+| 级别 | 条件 | 轮数 | 说明 |
+|------|------|------|------|
+| simple | ≤3场景, ≤60s | 1轮 | 核心检查 |
+| standard | 4-7场景 或 60-180s | 2轮 | 完整+可行性 |
+| complex | ≥8场景 或 >180s | 3轮 | 完整三轮 |
+
+### 四大验证维度
+
+1. **音频维度** (30%)：人声时长匹配、参数一致性、BGM兼容性
+2. **视觉维度** (25%)：风格定义、色彩策略、Baoyu映射
+3. **叙事维度** (20%)：结构完整性、情感曲线、信息密度
+4. **技术维度** (25%)：时长规范、跨阶段依赖、素材可行性
+
+### 关键检查项（必须PASS）
+
+- **A1**: 人声时长匹配验证（字数÷3.8字/秒）
+- **V1**: 风格定义完整性
+- **T3**: 跨阶段依赖验证
+
+### 置信度计算
+
+使用加权系统：
+```
+dimension_score = 100 - (failed_weight / total_weight × 100)
+total_confidence = Σ(dimension_score × dimension_weight)
+```
+
+- critical检查项权重：3.0
+- major检查项权重：2.0
+- minor检查项权重：1.0
+
+**通过标准：**
+- 总置信度 ≥ 85%
+- 所有critical检查项PASS
+
+### 验证文件
+
+生成以下文件：
+- `plan.yaml` - 创意方案（必须通过验证）
+- `validation-report.yaml` - 验证报告（含修订历史）
+
+### 对抗式思维问题示例
+
+每轮验证必须回答：
+- "是否遗漏了关键检查项？"
+- "这个设计是否在偷懒？"
+- "如果我是挑剔的观众会怎么批评？"
+- "是否有形式化填充？"
+
+详见：
+- [validation-checklist.yaml](validation-checklist.yaml) - 完整自检清单
+- [validation-report-template.yaml](validation-report-template.yaml) - 验证报告模板
+
 ## 相关资源
 
 请参阅docs/目录以获取完整的文档、模板、示例和实现指南。
+
+| 任务 | 参考文档 |
+|------|-----------|
+| 快速开始指南 | [docs/quick-start-guide.md](docs/quick-start-guide.md) |
+| 导演决策框架 | [docs/director-decision-framework.md](docs/director-decision-framework.md) |
+| 完整YAML模板 | [docs/complete-template-reference.md](docs/complete-template-reference.md) |
+| 风格系统与映射 | [docs/style-knowledge-base.md](docs/style-knowledge-base.md) |
+| 风格示例 | [docs/style-examples.md](docs/style-examples.md) |
+| Remotion集成 | [docs/implementation-guide.md](docs/implementation-guide.md) |
+| 故障排除 | [docs/troubleshooting-guide.md](docs/troubleshooting-guide.md) |
+| **对抗式验证清单** | [validation-checklist.yaml](validation-checklist.yaml) |
+| **验证报告模板** | [validation-report-template.yaml](validation-report-template.yaml) |

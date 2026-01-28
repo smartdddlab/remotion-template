@@ -1,0 +1,642 @@
+# ============================================
+# Video Director - 对抗式自检清单
+# Adversarial Validation Checklist
+# Version: 1.0
+# Purpose: 强制AI进行系统性质量验证，防止随意设计
+# ============================================
+
+validation_framework:
+  metadata:
+    name: "Video Director Adversarial Validation"
+    version: "1.0"
+    created: "2024-01-29"
+    principle: "通过对抗式思维，从多维度质疑设计决策，确保质量"
+
+  # ============================================
+  # 核心设计：分级验证机制
+  # ============================================
+
+  validation_tiers:
+    description: |
+      根据项目复杂度选择验证深度，避免过度设计。
+
+    tiers:
+      - tier: "simple"
+        condition: "≤3场景 AND ≤60秒"
+        rounds: 1
+        focus: "核心检查（A1, V1, T1, T3）"
+        description: "简单项目只需核心验证"
+
+      - tier: "standard"
+        condition: "4-7场景 OR 60-180秒"
+        rounds: 2
+        focus: "完整检查 + 可行性验证"
+        description: "标准项目需要两轮验证"
+
+      - tier: "complex"
+        condition: "≥8场景 OR >180秒"
+        rounds: 3
+        focus: "完整三轮对抗验证"
+        description: "复杂项目需要完整验证"
+
+  validation_process:
+    description: |
+      自检流程采用"生成→检查→修订→再验证"的循环机制，
+      直到置信度达到阈值（≥85%）方可输出。
+
+    steps:
+      - step: 1
+        name: "初始生成"
+        action: "生成plan.yaml初稿"
+        output: "plan.yaml v0.1"
+
+      - step: 2
+        name: "确定验证级别"
+        action: "根据场景数和时长确定验证级别"
+        output: "验证级别(simple/standard/complex)"
+
+      - step: 3
+        name: "第一轮对抗验证"
+        focus: "完整性质疑"
+        adversarial_questions:
+          - "是否遗漏了任何关键检查项？"
+          - "是否有未考虑的跨阶段依赖？"
+          - "风格定义是否完整？"
+          - "场景数量与时长是否匹配？"
+          - "这个设计是否在偷懒？是否有更优方案被忽略了？"
+        action: "逐项检查，标记FAIL项"
+        output: "第一轮检查报告"
+
+      - step: 4
+        name: "第一轮修订"
+        action: "修复所有FAIL项"
+        output: "plan.yaml v0.2"
+
+      - step: 5
+        name: "第二轮对抗验证（standard/complex）"
+        focus: "可行性质疑"
+        adversarial_questions:
+          - "所有设计是否在技术上可实现？"
+          - "素材需求是否在合理范围内？"
+          - "是否有过度设计？"
+          - "Baoyu-skill是否能生成所需风格？"
+          - "如果我是挑剔的观众，会怎么批评这个设计？"
+        action: "评估可行性，标记高风险项"
+        output: "第二轮检查报告"
+        skip_if: "tier == simple"
+
+      - step: 6
+        name: "第二轮修订（standard/complex）"
+        action: "调整或简化高风险项"
+        output: "plan.yaml v0.3"
+        skip_if: "tier == simple"
+
+      - step: 7
+        name: "第三轮对抗验证（complex）"
+        focus: "严谨性质疑"
+        adversarial_questions:
+          - "检查结论是否有充分依据？"
+          - "置信度计算是否准确？"
+          - "是否考虑了所有边界情况？"
+          - "跨维度一致性是否验证？"
+          - "是否有为了满足检查清单而做的形式化填充？"
+        action: "最终确认，计算总置信度"
+        output: "第三轮检查报告 + validation-report.yaml"
+        skip_if: "tier != complex"
+
+      - step: 8
+        name: "最终确认"
+        condition: "总置信度 ≥ 85% 且 关键检查项全部PASS"
+        action: "输出最终plan.yaml和validation-report.yaml"
+        if_fail: "返回继续修订（最多3轮迭代）"
+
+  # ============================================
+  # 关键检查项（必须全部PASS）
+  # ============================================
+
+  critical_checks:
+    description: |
+      以下检查项为核心基础，任何一项FAIL即视为整体不通过，
+      无论其他检查项表现如何。
+
+    checks:
+      - "A1: 人声时长匹配验证"
+        reason: "音频时长是所有时间计算的基础，出错将导致连锁错误"
+      - "T3: 跨阶段依赖验证"
+        reason: "确保所有设计决策正确传递，防止断裂"
+      - "V1: 风格定义完整性"
+        reason: "风格是所有视觉决策的基础"
+
+  # ============================================
+  # 四大验证维度（修订权重）
+  # ============================================
+
+  validation_dimensions:
+
+    # ============================================
+    # 维度1：音频 (Audio) - 权重提高
+    # ============================================
+    audio:
+      dimension_id: "A"
+      name: "音频维度验证"
+      weight: 0.30
+      rationale: "Remotion视频的核心是音画同步，音频时长匹配最关键"
+
+      checks:
+        - check_id: "A1"
+          name: "人声时长匹配验证"
+          method: "逐场景计算：字数 ÷ 3.8字/秒 = 理论时长"
+          tolerance: "±10% 或已在注释说明调整理由"
+
+          adversarial_questions:
+            - question: "如果语速不均匀怎么办？"
+              consideration: "考虑情感强烈处的自然放慢"
+            - question: "连续长句是否会导致气息不足？"
+              consideration: "检查是否有断句或停顿设计"
+            - question: "中文多音字是否影响时长计算？"
+              consideration: "复核关键术语的发音时长"
+
+          pass_criteria:
+            - "理论时长与实际分配时长误差≤10%"
+            - "或已明确标注调整理由（如强调、停顿）"
+
+          fail_action: "调整duration或精简文案"
+
+        - check_id: "A2"
+          name: "音频参数一致性"
+          method: "验证voice_id/emotion/speed/language_boost全场景一致"
+
+          adversarial_questions:
+            - question: "不同场景情感不同，是否需要变化？"
+              consideration: "确认emotion=neutral是否足够表达所有场景"
+            - question: "统一的speed是否会显得单调？"
+              consideration: "评估是否需要局部变速（统一为1.0，通过文案长度调整）"
+            - question: "language_boost=Chinese是否适配所有术语？"
+              consideration: "检查是否有大量英文术语需要特殊处理"
+
+          pass_criteria:
+            - "所有场景使用相同的voice_id/emotion/speed"
+            - "或已明确标注变化点及理由"
+
+          fail_action: "统一参数或标注变化理由"
+
+        - check_id: "A3"
+          name: "背景音乐兼容性"
+          method: "BGM风格与emotional_tone匹配度检查"
+
+          adversarial_questions:
+            - question: "BGM是否会掩盖人声？"
+              consideration: "检查混音层级：voice -18~-12 LUFS, music -24~-20 LUFS"
+            - question: "节奏是否过快或过慢？"
+              consideration: "验证BPM与场景切换频率的协调性"
+            - question: "文化风格是否匹配？"
+              consideration: "中国风视频是否使用中国传统乐器"
+
+          pass_criteria:
+            - "BGM情感基调与视频emotional_tone一致"
+            - "音量层级符合混音标准"
+            - "文化风格匹配（如有文化风格定义）"
+
+          fail_action: "调整BGM选择或混音参数"
+
+        - check_id: "A4"
+          name: "音效设计合理性"
+          method: "关键视觉事件是否有音效配合"
+
+          adversarial_questions:
+            - question: "音效是否过多导致杂乱？"
+              consideration: "遵循'少即是多'原则，只在关键点使用"
+            - question: "音效与人声是否冲突？"
+              consideration: "避免音效覆盖人声频率范围(1-4kHz)"
+            - question: "音效风格是否统一？"
+              consideration: "同一类型的动作使用一致的音效风格"
+
+          pass_criteria:
+            - "关键视觉事件有音效增强"
+            - "音效不干扰人声清晰度"
+            - "音效风格与整体风格一致"
+
+          fail_action: "精简音效或调整音效设计"
+
+        - check_id: "A5"
+          name: "场景间音频过渡"
+          method: "验证相邻场景音频的平滑过渡"
+
+          adversarial_questions:
+            - question: "场景切换时是否有突兀的音频跳变？"
+              consideration: "检查音量、音色的一致性"
+            - question: "BGM在场景间是否连续？"
+              consideration: "背景音乐是否应该跨场景延续"
+            - question: "音频转场是否服务于叙事？"
+              consideration: "音频变化是否强化场景转换的意义"
+
+          pass_criteria:
+            - "相邻场景音频参数一致"
+            - "BGM跨场景连续或合理变化"
+            - "音频变化有叙事目的"
+
+          fail_action: "调整音频参数或转场设计"
+
+    # ============================================
+    # 维度2：视觉 (Visual)
+    # ============================================
+    visual:
+      dimension_id: "V"
+      name: "视觉维度验证"
+      weight: 0.25
+
+      checks:
+        - check_id: "V1"
+          name: "风格定义完整性"
+          method: "验证四维风格体系(cultural/era/genre/technical)是否完整定义"
+
+          adversarial_questions:
+            - question: "是否存在风格冲突？"
+              consideration: "检查chinese+cyberpunk、classical+cartoon等冲突组合"
+            - question: "风格是否与内容主题匹配？"
+              consideration: "科技内容是否用科技风格，文化内容是否用文化风格"
+            - question: "风格是否与受众适配？"
+              consideration: "儿童受众避免过于阴郁，专业受众避免过于花哨"
+
+          pass_criteria:
+            - "四维风格定义完整"
+            - "无未解决的风格冲突"
+            - "style_rationale说明充分"
+
+          fail_action: "完善风格定义或解决冲突"
+
+        - check_id: "V2"
+          name: "色彩策略一致性"
+          method: "验证color_palette是否符合风格映射和WCAG标准"
+
+          adversarial_questions:
+            - question: "色彩对比度是否足够？"
+              consideration: "文字与背景对比度≥4.5:1"
+            - question: "色盲友好性如何？"
+              consideration: "避免仅依靠颜色传递信息"
+            - question: "长时间观看是否会造成视觉疲劳？"
+              consideration: "避免高饱和度大面积使用"
+
+          pass_criteria:
+            - "符合style-knowledge-base的配色映射"
+            - "WCAG AA级对比度标准"
+            - "emotional_mapping定义清晰"
+
+          fail_action: "调整配色方案"
+
+        - check_id: "V3"
+          name: "场景视觉连贯性"
+          method: "验证所有场景是否遵循同一style_definition"
+
+          adversarial_questions:
+            - question: "场景之间是否有足够的视觉桥梁？"
+              consideration: "检查是否有元素跨场景延续"
+            - question: "转场是否突兀？"
+              consideration: "transition_logic是否符合风格特征"
+            - question: "视觉复杂度是否平衡？"
+              consideration: "是否有复杂度曲线：低→高→中→高→低"
+
+          pass_criteria:
+            - "所有场景风格统一"
+            - "转场类型与风格一致"
+            - "视觉复杂度曲线合理"
+
+          fail_action: "调整场景设计或转场方案"
+
+        - check_id: "V4"
+          name: "排版可读性"
+          method: "验证typography的清晰度、层级和对比度"
+
+          adversarial_questions:
+            - question: "移动端观看是否清晰？"
+              consideration: "最小字号在移动端是否可读"
+            - question: "快速切换时是否能读完？"
+              consideration: "文字显示时长是否足够阅读"
+            - question: "字体选择是否符合风格？"
+              consideration: "中国风是否用书法/宋体，科技感是否用无衬线"
+
+          pass_criteria:
+            - "字体符合style_definition映射"
+            - "字号层级清晰(标题2.5x, 副标题1.75x, 正文1x)"
+            - "关键文字停留时间≥3秒"
+
+          fail_action: "调整字体系统或文字时长"
+
+        - check_id: "V5"
+          name: "Baoyu-skills映射正确性"
+          method: "验证style_definition到Baoyu参数的映射"
+
+          adversarial_questions:
+            - question: "每个需要的图像都有对应的Baoyu技能调用方案吗？"
+              consideration: "检查visual_aesthetic到baoyu-skill的映射"
+            - question: "Baoyu技能参数是否完整？"
+              consideration: "检查style、layout、color_palette等参数"
+            - question: "图像生成需求是否在合理范围内？"
+              consideration: "每场景≤3张，总计≤20张"
+
+          pass_criteria:
+            - "每个图像需求有对应的Baoyu技能"
+            - "参数与style_definition一致"
+            - "图像数量可控"
+
+          fail_action: "补充Baoyu映射或简化图像需求"
+
+    # ============================================
+    # 维度3：叙事 (Narrative) - 权重降低
+    # ============================================
+    narrative:
+      dimension_id: "N"
+      name: "叙事维度验证"
+      weight: 0.20
+      rationale: "Remotion更关注执行层面，叙事质量通过脚本审核阶段控制"
+
+      checks:
+        - check_id: "N1"
+          name: "叙事结构完整性"
+          method: "验证是否符合决策树推荐的结构"
+
+          adversarial_questions:
+            - question: "结构是否过于套路化？"
+              consideration: "在标准结构中寻找创新点"
+            - question: "高潮是否足够突出？"
+              consideration: "信息密度和视觉复杂度是否达到峰值"
+            - question: "结尾是否有力？"
+              consideration: "是否有明确的takeaway或情感升华"
+
+          pass_criteria:
+            - "符合视频类型对应的结构"
+            - "起承转合清晰"
+            - "高潮位置合理(黄金分割点)"
+
+          fail_action: "调整叙事结构"
+
+        - check_id: "N2"
+          name: "情感曲线连贯性"
+          method: "验证场景emotional_tone是否符合整体弧线"
+
+          adversarial_questions:
+            - question: "情感变化是否过于突兀？"
+              consideration: "检查相邻场景的情感跳跃是否过大"
+            - question: "是否有情感疲劳？"
+              consideration: "同一情感持续是否过长"
+            - question: "关键转折点是否足够impactful？"
+              consideration: "从setup到conflict的转换是否足够有力"
+
+          pass_criteria:
+            - "情感曲线流畅"
+            - "变化有叙事逻辑支撑"
+            - "与creative_vision的情感旅程一致"
+
+          fail_action: "调整场景emotional_tone或顺序"
+
+        - check_id: "N3"
+          name: "信息密度合理性"
+          method: "验证每秒字数分布和信息层级"
+
+          adversarial_questions:
+            - question: "信息是否过于密集？"
+              consideration: "认知负荷是否超过观众处理能力"
+            - question: "是否有足够的消化时间？"
+              consideration: "复杂概念后是否有缓冲场景"
+            - question: "核心信息是否被次要信息淹没？"
+              consideration: "最重要的takeaway是否突出"
+
+          pass_criteria:
+            - "信息密度分布合理(3.6-4.0字/秒)"
+            - "核心信息有视觉/音频强调"
+            - "复杂内容后有缓冲"
+
+          fail_action: "精简文案或调整信息层级"
+
+        - check_id: "N4"
+          name: "转场逻辑连贯性"
+          method: "验证transition_logic是否有明确叙事目的"
+
+          adversarial_questions:
+            - question: "转场是否为了炫技？"
+              consideration: "每个转场是否服务于叙事而非装饰"
+            - question: "转场是否打断叙事流？"
+              consideration: "是否使用过于复杂的转场分散注意力"
+            - question: "转场类型是否过于杂乱？"
+              consideration: "是否在3-4种转场类型内保持一致"
+
+          pass_criteria:
+            - "每个转场有明确叙事目的"
+            - "转场类型与风格一致"
+            - "转场数量适中，不喧宾夺主"
+
+          fail_action: "简化或统一转场方案"
+
+    # ============================================
+    # 维度4：技术 (Technical)
+    # ============================================
+    technical:
+      dimension_id: "T"
+      name: "技术维度验证"
+      weight: 0.25
+
+      checks:
+        - check_id: "T1"
+          name: "时长规范符合性"
+          method: "验证总时长是否符合target_duration规划"
+
+          adversarial_questions:
+            - question: "是否过长导致观众流失？"
+              consideration: "超过3分钟的视频完播率显著下降"
+            - question: "是否过短导致信息不足？"
+              consideration: "核心信息是否充分展开"
+            - question: "场景分配是否均衡？"
+              consideration: "是否有某个场景过长或过短"
+
+          pass_criteria:
+            - "符合target_duration规划(±10%)"
+            - "场景时长分配与信息重要性匹配"
+            - "黄金分割点有重要内容"
+
+          fail_action: "调整场景数量或时长分配"
+
+        - check_id: "T2"
+          name: "技术规格正确性"
+          method: "验证resolution/fps/bitrate是否符合标准"
+
+          adversarial_questions:
+            - question: "分辨率是否适配目标平台？"
+              consideration: "YouTube/B站/抖音的不同要求"
+            - question: "帧率是否足够流畅？"
+              consideration: "30fps是否满足动画流畅度需求"
+            - question: "编码设置是否合理？"
+              consideration: "H.264兼容性和文件大小平衡"
+
+          pass_criteria:
+            - "1920x1080 @ 30fps"
+            - "H.264编码，20Mbps"
+            - "音频48kHz/24bit"
+
+          fail_action: "调整技术规格"
+
+        - check_id: "T3"
+          name: "跨阶段依赖验证"
+          method: "验证上游决策是否正确影响下游"
+
+          adversarial_questions:
+            - question: "emotional_tone是否正确映射到color_palette？"
+              consideration: "检查决策树的step2映射"
+            - question: "narrative_structure是否正确影响animation_style？"
+              consideration: "三幕式是否对应动态转场"
+            - question: "scene_duration是否正确计算为durationInFrames？"
+              consideration: "验证durationInFrames = duration × fps"
+
+          pass_criteria:
+            - "所有跨阶段依赖关系正确"
+            - "上游决策正确传递到下游"
+            - "无断裂或不一致的映射"
+
+          fail_action: "修复依赖关系"
+
+        - check_id: "T4"
+          name: "素材需求可行性"
+          method: "验证所需素材是否可获取/可生成"
+
+          adversarial_questions:
+            - question: "Baoyu-skill是否能生成所需风格？"
+              consideration: "检查style_definition到Baoyu参数的映射"
+            - question: "素材数量是否在合理范围内？"
+              consideration: "每场景≤3张图，总计≤20张"
+            - question: "是否有版权风险？"
+              consideration: "使用原创或CC0素材"
+
+          pass_criteria:
+            - "所有素材有明确的获取/生成方案"
+            - "素材数量在可控范围内"
+            - "无已知的版权风险"
+
+          fail_action: "简化素材需求或调整设计方案"
+
+  # ============================================
+  # 置信度计算（加权系统）
+  # ============================================
+
+  confidence_calculation:
+    description: |
+      使用加权系统计算置信度，考虑检查项的严重程度。
+      避免"检查项数量不均"导致的偏差。
+
+    severity_weights:
+      critical: 3.0    # 核心检查项，失败=整体失败
+      major: 2.0       # 重要检查项，严重影响质量
+      minor: 1.0       # 次要检查项，可接受失败
+
+    check_severity_map:
+      # 音频维度
+      A1: critical     # 人声时长匹配
+      A2: major       # 音频参数一致性
+      A3: minor       # 背景音乐兼容性
+      A4: minor       # 音效设计合理性
+      A5: minor       # 场景间音频过渡
+      # 视觉维度
+      V1: critical     # 风格定义完整性
+      V2: major       # 色彩策略一致性
+      V3: major       # 场景视觉连贯性
+      V4: minor       # 排版可读性
+      V5: major       # Baoyu-skills映射
+      # 叙事维度
+      N1: major       # 叙事结构完整性
+      N2: minor       # 情感曲线连贯性
+      N3: minor       # 信息密度合理性
+      N4: minor       # 转场逻辑连贯性
+      # 技术维度
+      T1: major       # 时长规范符合性
+      T2: minor       # 技术规格正确性
+      T3: critical     # 跨阶段依赖验证
+      T4: major       # 素材需求可行性
+
+    formula: |
+      # 单维度得分
+      dimension_score = 100 - (failed_weight / total_weight × 100)
+
+      # 示例：某维度3个检查项，权重分别为3.0(critical), 2.0(major), 1.0(minor)
+      # 如果critical失败：得分 = 100 - (3.0/6.0 × 100) = 50%
+      # 如果major失败：得分 = 100 - (2.0/6.0 × 100) = 67%
+      # 如果minor失败：得分 = 100 - (1.0/6.0 × 100) = 83%
+
+      # 总置信度（加权平均）
+      total_confidence =
+        (audio_score × 0.30) +
+        (visual_score × 0.25) +
+        (narrative_score × 0.20) +
+        (technical_score × 0.25)
+
+    thresholds:
+      excellent: "≥ 95% - 质量优秀，可直接输出"
+      acceptable: "≥ 85% - 质量可接受，建议优化警告项"
+      needs_work: "< 85% - 需修订后重新验证"
+
+    minimum_requirement:
+      total_confidence: "≥ 85%"
+      critical_checks: "全部PASS（权重>0）"
+
+    hard_fail_conditions:
+      - "任何critical检查项FAIL"
+      - "同一维度内>50%权重FAIL"
+      - "连续3轮迭代后仍<85%"
+
+  # ============================================
+  # 修订历史记录规范
+  # ============================================
+
+  revision_history:
+    description: "每次修订都必须记录，保留完整审计轨迹"
+
+    record_format:
+      revision_id: "R{round}-{number}"
+      timestamp: "ISO 8601格式"
+      triggered_by: "哪轮验证的哪个检查项FAIL"
+      original_value: "原始设计值"
+      revised_value: "修订后的值"
+      revision_reason: "详细说明为什么需要修订"
+      impact_analysis: "此修订影响的其他维度"
+      confidence_before: "修订前的置信度"
+      confidence_after: "修订后的置信度"
+
+    example:
+      revision_id: "R1-1"
+      timestamp: "2024-01-29T10:35:00Z"
+      triggered_by: "A1检查: 场景2时长不足(19.7s vs 10s)"
+      original_value: "duration: 10s, chars: 75"
+      revised_value: "duration: 20s, 或精简chars至38"
+      revision_reason: "语速3.8字/秒下，75字需要19.7秒，原10s严重不足"
+      impact_analysis: "总时长从60s增至70s，需调整后续场景时序"
+      confidence_before: "62%"
+      confidence_after: "78%"
+
+  # ============================================
+  # 输出规范
+  # ============================================
+
+  output_requirements:
+    - file: "plan.yaml"
+      description: "最终创意方案"
+      requirement: "必须通过所有验证"
+
+    - file: "validation-report.yaml"
+      description: "验证报告"
+      requirement: "必须包含完整的三轮验证记录和修订历史"
+
+    - file: "revision-log.yaml" (optional)
+      description: "详细的修订日志（如果修订较多）"
+      requirement: "可选，但建议保留"
+
+  # ============================================
+  # 使用说明
+  # ============================================
+
+  usage_instructions: |
+    1. 在生成plan.yaml后，必须执行此自检清单
+    2. 每个检查项都要回答对应的对抗性问题
+    3. FAIL项必须修订并记录
+    4. 三轮验证都完成后，计算总置信度
+    5. 置信度≥85%方可输出，否则继续修订
+    6. 所有修订记录保留在validation-report.yaml中
+
+    注意：此清单是强制性的，不可跳过。
+    未完成自检的plan.yaml视为未完成。

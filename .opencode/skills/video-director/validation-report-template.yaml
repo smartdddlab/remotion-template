@@ -1,0 +1,518 @@
+# ============================================
+# Video Director - 验证报告模板
+# Validation Report Template
+# Version: 1.0
+# ============================================
+# 使用说明：
+# 1. 此文件在plan.yaml生成后自动创建
+# 2. 每轮验证后更新检查结果和修订历史
+# 3. 最终置信度≥85%且所有critical检查通过后方可完成
+# ============================================
+
+validation_report:
+  metadata:
+    report_id: "VR-{timestamp}"
+    generated_at: "2024-01-29T10:30:00Z"
+    plan_file: "plan.yaml"
+    validation_framework_version: "1.0"
+    validation_tier: "simple|standard|complex"
+
+  # ============================================
+  # 验证摘要（最终轮次填写）
+  # ============================================
+
+  summary:
+    total_rounds: 3
+    final_confidence: 85.5
+    status: "ACCEPTED|NEEDS_WORK|REJECTED"
+
+    check_statistics:
+      total_checks: 18
+      passed: 15
+      failed: 2
+      warning: 1
+
+    critical_checks_status:
+      A1_voice_timing: "PASS"
+      V1_style_definition: "PASS"
+      T3_cross_stage_dependency: "PASS"
+
+    dimension_scores:
+      audio: 88.0
+      visual: 82.0
+      narrative: 85.0
+      technical: 87.0
+
+    final_recommendation: |
+      置信度85.5%达到最低要求（≥85%），
+      但建议关注视觉维度的警告项V3。
+
+  # ============================================
+  # 逐轮验证详情
+  # ============================================
+
+  rounds:
+    - round: 1
+      name: "完整性质疑"
+      timestamp: "2024-01-29T10:32:00Z"
+
+      adversarial_mindset: |
+        本轮以"质疑完整性"为核心，
+        检查是否遗漏关键项，是否有隐藏假设。
+
+      dimension_results:
+        audio:
+          score: 75.0
+          checks:
+            - check_id: "A1"
+              name: "人声时长匹配验证"
+              status: "FAIL"
+              severity: "critical"
+              details:
+                scene: 2
+                chars: 75
+                calculated_duration: 19.7
+                assigned_duration: 10
+                margin: "-48.7%"
+              adversarial_qa:
+                - q: "如果语速不均匀怎么办？"
+                  a: "已考虑，但10s无论如何都不够"
+                - q: "连续长句是否会导致气息不足？"
+                  a: "文案需要重新断句"
+              remediation: "将场景2时长调整为20s，或精简文案至38字"
+
+            - check_id: "A2"
+              name: "音频参数一致性"
+              status: "PASS"
+              details: "所有场景voice_id/emotion/speed一致"
+
+        visual:
+          score: 90.0
+          checks:
+            - check_id: "V1"
+              name: "风格定义完整性"
+              status: "PASS"
+              details: "四维风格定义完整，无冲突"
+
+            - check_id: "V2"
+              name: "色彩策略一致性"
+              status: "WARNING"
+              details: "配色符合映射，但建议验证WCAG对比度"
+
+        narrative:
+          score: 85.0
+          checks:
+            - check_id: "N1"
+              name: "叙事结构完整性"
+              status: "PASS"
+
+        technical:
+          score: 80.0
+          checks:
+            - check_id: "T1"
+              name: "时长规范符合性"
+              status: "FAIL"
+              details: "总时长60s，实际需174s，超出规划"
+
+      round_summary:
+        confidence: 78.0
+        status: "NEEDS_REVISION"
+        critical_failures: ["A1", "T1"]
+        action: "进入第一轮修订"
+
+    - round: 2
+      name: "可行性质疑"
+      timestamp: "2024-01-29T10:45:00Z"
+
+      adversarial_mindset: |
+        本轮以"质疑可行性"为核心，
+        检查设计是否可实现，素材是否可获取。
+
+      dimension_results:
+        audio:
+          score: 95.0
+          checks:
+            - check_id: "A1"
+              name: "人声时长匹配验证"
+              status: "PASS"
+              details: "已调整为174s总时长，各场景匹配"
+
+        visual:
+          score: 85.0
+          checks:
+            - check_id: "V5"
+              name: "Baoyu-skills映射正确性"
+              status: "WARNING"
+              details: "8个场景需要16张图，接近上限20张"
+
+        technical:
+          score: 90.0
+          checks:
+            - check_id: "T4"
+              name: "素材需求可行性"
+              status: "PASS"
+              details: "所有素材可通过Baoyu生成"
+
+      round_summary:
+        confidence: 85.0
+        status: "ACCEPTABLE"
+        warnings: ["V5"]
+        action: "进入第三轮严谨性验证"
+
+    - round: 3
+      name: "严谨性质疑"
+      timestamp: "2024-01-29T10:58:00Z"
+
+      adversarial_mindset: |
+        本轮以"质疑严谨性"为核心，
+        检查是否有形式化填充，是否遗漏边界情况。
+
+      dimension_results:
+        visual:
+          score: 82.0
+          checks:
+            - check_id: "V3"
+              name: "场景视觉连贯性"
+              status: "WARNING"
+              details: "场景7对比切换可能过于突兀，建议添加过渡元素"
+
+      round_summary:
+        confidence: 85.5
+        status: "ACCEPTED"
+        final_notes: "置信度达标，V3警告可接受"
+
+  # ============================================
+  # 修订历史（逐条记录每次修订）
+  # ============================================
+
+  revision_history:
+    description: |
+      每次修订的完整记录，包括：
+      - 触发原因（哪轮验证的哪个检查项）
+      - 原始值与修订值
+      - 修订理由
+      - 影响分析
+      - 置信度变化
+
+    revisions:
+      - revision_id: "R1-1"
+        timestamp: "2024-01-29T10:35:00Z"
+        triggered_by: "第一轮验证 - A1检查FAIL"
+        dimension: "audio"
+        check_id: "A1"
+
+        original_value:
+          scene_2_duration: 10
+          scene_2_chars: 75
+          total_duration: 60
+
+        revised_value:
+          scene_2_duration: 20
+          scene_2_chars: 75
+          total_duration: 174
+
+        revision_reason: |
+          语速3.8字/秒下，75字需要19.7秒。
+          原分配10s严重不足，导致音画不同步。
+
+        impact_analysis:
+          affected_scenes: ["场景2", "场景3-8时序"]
+          total_duration_change: "60s → 174s (+114s)"
+          visual_adjustments: "需要重新设计场景过渡"
+          narrative_impact: "无，内容不变"
+
+        confidence_before: 62.0
+        confidence_after: 78.0
+        improvement: "+16%"
+
+        validator_notes: |
+          这是最关键的一次修订，解决了音画同步的根本问题。
+          虽然总时长大幅增加，但这是必要的，不能妥协。
+
+      - revision_id: "R1-2"
+        timestamp: "2024-01-29T10:40:00Z"
+        triggered_by: "第一轮验证 - T1检查FAIL"
+        dimension: "technical"
+        check_id: "T1"
+
+        original_value:
+          target_duration: "short (<60s)"
+          scene_count: 8
+
+        revised_value:
+          target_duration: "medium (60-180s)"
+          scene_count: 8
+
+        revision_reason: |
+          文案内容决定了需要174秒，无法压缩到60秒内而不损失信息。
+          调整目标时长类别为medium。
+
+        impact_analysis:
+          audience_expectations: "medium时长观众预期更从容的 pacing"
+          pacing_strategy: "从fast调整为moderate"
+          voice_speed: "保持3.6-3.8字/秒"
+
+        confidence_before: 78.0
+        confidence_after: 82.0
+        improvement: "+4%"
+
+        validator_notes: |
+          时长类别的调整是承认现实，不是妥协。
+          强行压缩会导致质量问题。
+
+      - revision_id: "R2-1"
+        timestamp: "2024-01-29T10:50:00Z"
+        triggered_by: "第二轮验证 - V5检查WARNING"
+        dimension: "visual"
+        check_id: "V5"
+
+        original_value:
+          image_requirements: "每场景2-3张，总计约20张"
+
+        revised_value:
+          image_requirements: "每场景1-2张，总计16张"
+          reuse_strategy: "部分纹理和背景可复用"
+
+        revision_reason: |
+          接近Baoyu生成上限，需要优化图像需求。
+          通过复用背景和纹理减少生成数量。
+
+        impact_analysis:
+          visual_consistency: "复用元素反而增强了风格统一性"
+          generation_time: "预计节省20%生成时间"
+          cost: "减少4张图的生成成本"
+
+        confidence_before: 85.0
+        confidence_after: 87.0
+        improvement: "+2%"
+
+        validator_notes: |
+          这是一个积极的优化，而非被迫的妥协。
+          资源约束推动了更好的设计决策。
+
+  # ============================================
+  # 检查项详细结果（最终状态）
+  # ============================================
+
+  detailed_results:
+    description: "所有检查项的最终状态汇总"
+
+    by_dimension:
+      - dimension: "audio"
+        score: 88.0
+        checks:
+          - check_id: "A1"
+            name: "人声时长匹配验证"
+            status: "PASS"
+            severity: "critical"
+            weight: 3.0
+            notes: "所有场景匹配度误差<10%"
+
+          - check_id: "A2"
+            name: "音频参数一致性"
+            status: "PASS"
+            severity: "major"
+            weight: 2.0
+
+          - check_id: "A3"
+            name: "背景音乐兼容性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+          - check_id: "A4"
+            name: "音效设计合理性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+          - check_id: "A5"
+            name: "场景间音频过渡"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+      - dimension: "visual"
+        score: 82.0
+        checks:
+          - check_id: "V1"
+            name: "风格定义完整性"
+            status: "PASS"
+            severity: "critical"
+            weight: 3.0
+
+          - check_id: "V2"
+            name: "色彩策略一致性"
+            status: "PASS"
+            severity: "major"
+            weight: 2.0
+
+          - check_id: "V3"
+            name: "场景视觉连贯性"
+            status: "WARNING"
+            severity: "major"
+            weight: 2.0
+            notes: "场景7对比切换建议添加过渡元素"
+
+          - check_id: "V4"
+            name: "排版可读性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+          - check_id: "V5"
+            name: "Baoyu-skills映射正确性"
+            status: "PASS"
+            severity: "major"
+            weight: 2.0
+
+      - dimension: "narrative"
+        score: 85.0
+        checks:
+          - check_id: "N1"
+            name: "叙事结构完整性"
+            status: "PASS"
+            severity: "major"
+            weight: 2.0
+
+          - check_id: "N2"
+            name: "情感曲线连贯性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+          - check_id: "N3"
+            name: "信息密度合理性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+          - check_id: "N4"
+            name: "转场逻辑连贯性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+      - dimension: "technical"
+        score: 87.0
+        checks:
+          - check_id: "T1"
+            name: "时长规范符合性"
+            status: "PASS"
+            severity: "major"
+            weight: 2.0
+
+          - check_id: "T2"
+            name: "技术规格正确性"
+            status: "PASS"
+            severity: "minor"
+            weight: 1.0
+
+          - check_id: "T3"
+            name: "跨阶段依赖验证"
+            status: "PASS"
+            severity: "critical"
+            weight: 3.0
+
+          - check_id: "T4"
+            name: "素材需求可行性"
+            status: "PASS"
+            severity: "major"
+            weight: 2.0
+
+  # ============================================
+  # 最终确认
+  # ============================================
+
+  final_signoff:
+    validated_by: "Claude Code / video-director skill"
+    validation_completed_at: "2024-01-29T11:00:00Z"
+
+    final_confidence: 85.5
+    meets_threshold: true
+    threshold: 85.0
+
+    critical_checks_passed: true
+    all_critical: ["A1", "V1", "T3"]
+    critical_status:
+      A1: "PASS"
+      V1: "PASS"
+      T3: "PASS"
+
+    warnings:
+      - "V3: 场景7对比切换建议添加过渡元素"
+
+    recommendations_for_user:
+      - "设计已完成并通过验证，可以进入音频生成阶段"
+      - "关注场景7的视觉过渡，如有资源可增加过渡元素"
+      - "Baoyu图像生成数量在可控范围内，按计划执行"
+
+    known_limitations:
+      - "总时长174秒超出最初预期，但这是文案内容决定的必要长度"
+      - "16张图像生成需要一定时间，建议并行生成"
+
+    next_steps:
+      - "生成音频文件（8个场景的配音）"
+      - "生成Baoyu图像素材（16张）"
+      - "进入Remotion开发阶段"
+
+  # ============================================
+  # 附录：计算过程
+  # ============================================
+
+  appendix:
+    confidence_calculation_details:
+      description: "详细的置信度计算过程"
+
+      audio_calculation:
+        checks:
+          - id: "A1"
+            weight: 3.0
+            status: "PASS"
+            contribution: 3.0
+          - id: "A2"
+            weight: 2.0
+            status: "PASS"
+            contribution: 2.0
+          - id: "A3"
+            weight: 1.0
+            status: "PASS"
+            contribution: 1.0
+          - id: "A4"
+            weight: 1.0
+            status: "PASS"
+            contribution: 1.0
+          - id: "A5"
+            weight: 1.0
+            status: "PASS"
+            contribution: 1.0
+        total_weight: 8.0
+        passed_weight: 8.0
+        score: "100 - (0/8 × 100) = 100%"
+        weighted_score: 88.0  # 考虑历史失败记录的调整
+
+      # 其他维度的计算类似...
+
+    revision_impact_analysis:
+      - revision: "R1-1"
+        impact: "解决了音画同步的根本问题，置信度提升16%"
+      - revision: "R1-2"
+        impact: "承认了现实约束，置信度提升4%"
+      - revision: "R2-1"
+        impact: "优化了资源使用，置信度提升2%"
+
+  # ============================================
+  # 校验信息
+  # ============================================
+
+  validation_integrity:
+    report_completeness: true
+    all_rounds_documented: true
+    all_revisions_tracked: true
+    final_signoff_present: true
+
+    self_check:
+      - "此报告已包含所有必需字段"
+      - "所有修订都有完整的理由和影响分析"
+      - "置信度计算过程可审计"
+      - "最终确认已签署"
