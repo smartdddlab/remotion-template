@@ -1010,6 +1010,20 @@ director_pre_flight_check:
     - [ ] 风格冲突已检测（不合理组合已警告或解决）
     - [ ] Baoyu-skills 图像生成参数已根据风格映射
     - [ ] 风格与情感基调、视频类型一致
+
+  # 对抗式验证（强制 v6.0+）
+  adversarial_validation:
+    - [ ] 已执行验证（参照 validation-checklist.yaml 和 validation-report-template.yaml）
 ```
+
+---
+
+## 输出交付
+
+完成所有决策并生成 plan.yaml 后，**必须执行对抗式验证**（参照 [validation-checklist.yaml](../validation-checklist.yaml) 和 [validation-report-template.yaml](../validation-report-template.yaml)）。
+
+交付物：
+- `plan.yaml` - 创意方案
+- `validation-report.yaml` - 验证报告
 
 ---

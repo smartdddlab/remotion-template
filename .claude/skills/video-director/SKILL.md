@@ -43,6 +43,7 @@ description: 专业视频制作框架，将脚本转化为结构化生产计划�
 3. **协调各部门**（脚本、音频、视觉的一致性）
 4. **生成生产计划**（所有团队的结构化指导）
 5. **设置质量检查点**（每个阶段的审查关口）
+6. **执行对抗式验证**（参照 validation-checklist.yaml 和 validation-report-template.yaml）
 
 **风格处理：**
 - 明确风格 → 确认后应用
@@ -61,6 +62,8 @@ description: 专业视频制作框架，将脚本转化为结构化生产计划�
 | 风格示例 | [docs/style-examples.md](docs/style-examples.md) |
 | Remotion集成 | [docs/implementation-guide.md](docs/implementation-guide.md) |
 | 故障排除 | [docs/troubleshooting-guide.md](docs/troubleshooting-guide.md) |
+| **对抗式验证清单** | [validation-checklist.yaml](validation-checklist.yaml) |
+| **验证报告模板** | [validation-report-template.yaml](validation-report-template.yaml) |
 
 ## 风格系统 (v5.2+)
 

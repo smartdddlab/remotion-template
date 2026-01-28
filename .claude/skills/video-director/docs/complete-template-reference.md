@@ -1208,5 +1208,6 @@ video_director_framework:
 # 3. Reference relevant sections during each production phase
 # 4. Complete approval checkpoints before advancing to next phase
 # 5. Update documentation as production evolves
+# 6. 执行对抗式验证（参照 validation-checklist.yaml 和 validation-report-template.yaml）
 # ============================================
 ````

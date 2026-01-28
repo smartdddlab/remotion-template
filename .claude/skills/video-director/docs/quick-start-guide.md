@@ -403,6 +403,7 @@ style_definition:
 - [ ] 已检查风格冲突（不合理组合）
 - [ ] 已验证自动映射结果（visual_art 部分）
 - [ ] 已完成所有导演审批检查点
+- [ ] **已执行对抗式验证**（参照 [validation-checklist.yaml](../validation-checklist.yaml) 和 [validation-report-template.yaml](../validation-report-template.yaml)）
 
 ---
 
