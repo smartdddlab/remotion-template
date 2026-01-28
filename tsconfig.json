@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2018",
     "module": "commonjs",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true,
+    "noEmit": true,
+    "lib": ["es2015"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["ES2020", "DOM"]
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "output/**/*"]
+  "exclude": ["remotion.config.ts", "node_modules", "output/**/*"]
 }

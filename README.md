@@ -6,10 +6,10 @@
 ```bash
 # 克隆项目
 git clone https://github.com/yourusername/remotion-template.git my-video-project
-cd my-video-project
+cd my-video
 
 # 安装依赖
-pnpm install
+pnpm i
 ```
 
 ### 2. 配置 MiniMax API Key
@@ -22,23 +22,15 @@ pnpm install
 ### 3. 一句话创建视频
 使用 OpenCode 或 Claude Code 输入：
 
-**样例1：智能风格识别**（AI自动推荐最适合的风格）
+**样例1：中国风视频**
 ```
-基于量子计算主题创建一个科普视频
-```
-*AI会自动识别内容主题，推荐赛博朋克风格，并生成对应的视觉效果*
-
-**样例2：明确风格指定**（用户指定特定风格）
-```
-基于中国传统文化内容，创建一个中国风的教育视频
-```
-*系统会应用完整中国风映射，生成水墨、书法等传统元素*
-
-**样例3：经典示例**
-```
-基于 "docs/跳跳糖.md" 创建一个视频
+基于 "docs/跳跳糖.md" 创建中国风视频
 ```
 
+**样例2：自动风格视频**
+```
+基于 "docs/跳跳糖.md" 创建视频
+```
 ### 4. 查看最终生成的视频
 在 public 目录下，找到生成的视频文件。
 

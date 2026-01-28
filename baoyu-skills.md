@@ -218,64 +218,6 @@ baoyu-cover-image path/to/article.md --no-title
 | ![watercolor](./screenshots/cover-image-styles/watercolor.webp) | ![flat-doodle](./screenshots/cover-image-styles/flat-doodle.webp) | |
 | watercolor | flat-doodle | |
 
-#### baoyu-slide-deck
-
-从内容生成专业的幻灯片图片。先创建包含样式说明的完整大纲，然后逐页生成幻灯片图片。
-
-```bash
-# 从 markdown 文件生成
-baoyu-slide-deck path/to/article.md
-
-# 指定风格和受众
-baoyu-slide-deck path/to/article.md --style corporate
-baoyu-slide-deck path/to/article.md --audience executives
-
-# 仅生成大纲（不生成图片）
-baoyu-slide-deck path/to/article.md --outline-only
-
-# 指定语言
-baoyu-slide-deck path/to/article.md --lang zh
-```
-
-**风格**（视觉美学）：
-
-| 风格 | 描述 | 适用场景 |
-|------|------|----------|
-| `blueprint`（默认） | 技术蓝图风格，网格纹理，工程精度 | 架构设计、系统设计 |
-| `notion` | SaaS 仪表盘美学，卡片式布局，数据清晰 | 产品演示、SaaS、B2B |
-| `bold-editorial` | 杂志社论风格，粗体排版，深色背景 | 产品发布、主题演讲 |
-| `corporate` | 海军蓝/金色配色，结构化布局，专业图标 | 投资者演示、客户提案 |
-| `dark-atmospheric` | 电影级暗色调，发光效果，氛围感 | 娱乐、游戏、创意 |
-| `editorial-infographic` | 杂志风格信息图，扁平插画 | 科技解说、研究报告 |
-| `fantasy-animation` | 吉卜力/迪士尼风格，手绘动画 | 教育、故事讲述 |
-| `intuition-machine` | 技术简报，双语标签，做旧纸张纹理 | 技术文档、双语内容 |
-| `minimal` | 极简风格，大量留白，单一强调色 | 高管简报、高端品牌 |
-| `pixel-art` | 复古 8-bit 像素风，怀旧游戏感 | 游戏、开发者分享 |
-| `scientific` | 学术图表，生物通路，精确标注 | 生物、化学、医学 |
-| `sketch-notes` | 手绘风格，柔和笔触，暖白色背景 | 教育、教程、知识分享 |
-| `vector-illustration` | 扁平矢量风格，黑色轮廓线，复古柔和配色 | 创意提案、说明性内容 |
-| `vintage` | 做旧纸张美学，历史文档风格 | 历史、传记、人文 |
-| `watercolor` | 柔和手绘水彩纹理，自然温暖 | 生活方式、健康、旅行 |
-
-**风格预览**：
-
-| | | |
-|:---:|:---:|:---:|
-| ![blueprint](./screenshots/slide-deck-styles/blueprint.webp) | ![chalkboard](./screenshots/slide-deck-styles/chalkboard.webp) | ![bold-editorial](./screenshots/slide-deck-styles/bold-editorial.webp) |
-| blueprint | chalkboard | bold-editorial |
-| ![corporate](./screenshots/slide-deck-styles/corporate.webp) | ![dark-atmospheric](./screenshots/slide-deck-styles/dark-atmospheric.webp) | ![editorial-infographic](./screenshots/slide-deck-styles/editorial-infographic.webp) |
-| corporate | dark-atmospheric | editorial-infographic |
-| ![fantasy-animation](./screenshots/slide-deck-styles/fantasy-animation.webp) | ![intuition-machine](./screenshots/slide-deck-styles/intuition-machine.webp) | ![minimal](./screenshots/slide-deck-styles/minimal.webp) |
-| fantasy-animation | intuition-machine | minimal |
-| ![notion](./screenshots/slide-deck-styles/notion.webp) | ![pixel-art](./screenshots/slide-deck-styles/pixel-art.webp) | ![scientific](./screenshots/slide-deck-styles/scientific.webp) |
-| notion | pixel-art | scientific |
-| ![sketch-notes](./screenshots/slide-deck-styles/sketch-notes.webp) | ![vector-illustration](./screenshots/slide-deck-styles/vector-illustration.webp) | ![vintage](./screenshots/slide-deck-styles/vintage.webp) |
-| sketch-notes | vector-illustration | vintage |
-| ![watercolor](./screenshots/slide-deck-styles/watercolor.webp) | | |
-| watercolor | | |
-
-生成完成后，所有幻灯片会自动合并为 `.pptx` 文件，方便分享。
-
 #### baoyu-comic
 
 知识漫画创作器，支持多种风格（Logicomix/清线风格、欧姆社漫画教程风格）。创作带有详细分镜布局的原创教育漫画，逐页生成图片。

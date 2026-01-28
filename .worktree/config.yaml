@@ -1,0 +1,100 @@
+# Remotion Inspector 项目配置
+# 位置: .worktree/config.yaml
+
+version: "1.0"
+project: "remotion-template"
+created: "2026-01-28T15:07:00Z"
+
+# 检查策略配置
+inspection:
+  # 自动检查触发点
+  auto_inspect:
+    after_audio_generation: true
+    after_component_creation: true  
+    before_preview: true
+    after_render: true
+    
+  # 检查深度控制
+  depth:
+    audio_validation: "full"  # basic, standard, full
+    component_validation: "standard"
+    integration_validation: "standard"
+    runtime_validation: "full"
+    
+  # 问题严重性阈值
+  severity_threshold: "medium"  # low, medium, high, critical
+  
+  # 自动修复尝试
+  auto_fix:
+    enabled: false  # 警告：实验性功能
+    allow_types: ["relative_frame_missing", "import_statement"]
+    confirm_before_apply: true
+
+# 项目特定配置
+project_specific:
+  # 场景配置
+  scenes:
+    count: 5  # 根据plan.yaml自动检测
+    expected_audio_files: ["scene1.mp3", "scene2.mp3", "scene3.mp3", "scene4.mp3", "scene5.mp3"]
+    
+  # 技术要求
+  requirements:
+    use_relative_frame: true
+    emotion_parameter: "neutral"
+    speed_parameter: 1.0
+    language_boost: "Chinese"
+    
+  # 视觉要求
+  visual:
+    resolution: "1920x1080"
+    fps: 30
+    max_dom_nodes: 100
+
+# 注册表配置
+registry:
+  location: "public/inspection-registry.yaml"
+  auto_update: true
+  max_problems: 100
+  cleanup_days: 30
+  
+# 报告配置
+reporting:
+  format: "yaml"  # yaml, json, markdown
+  include_fixes: true
+  include_code_snippets: true
+  summary_level: "detailed"  # brief, standard, detailed
+
+# 集成配置
+integration:
+  # 与AGENTS.md工作流程集成
+  workflow_checkpoints:
+    - name: "智能音频验证"
+      step: "3.5"
+      command: "使用技能: remotion-inspector 检查模式: audio"
+      
+    - name: "智能组件验证"
+      step: "4.5"
+      command: "使用技能: remotion-inspector 检查模式: components"
+      
+    - name: "智能预览验证"
+      step: "5"
+      command: "使用技能: remotion-inspector 检查模式: preview"
+      
+  # 与现有脚本集成
+  scripts:
+    check_sh: "已重构为智能检查入口"
+    validate_plan_sh: "保持独立，补充inspector"
+
+# 性能配置
+performance:
+  max_concurrent_checks: 3
+  timeout_seconds: 30
+  cache_results: true
+  cache_ttl_minutes: 60
+
+# 开发模式
+development:
+  debug_mode: false
+  log_level: "info"  # debug, info, warning, error
+  log_to_file: true
+  log_directory: ".worktree/logs"

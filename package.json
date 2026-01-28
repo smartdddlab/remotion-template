@@ -1,23 +1,33 @@
 {
-  "name": "remotion-template",
+  "name": "rt",
   "version": "1.0.0",
-  "description": "Remotion 视频制作模板项目",
-  "main": "index.js",
-  "scripts": {
-    "dev": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts JumpSugarVideo output/video.mp4",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": ["remotion", "video", "template"],
-  "author": "",
-  "license": "ISC",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
   "dependencies": {
-    "remotion": "^4.0.409",
-    "@remotion/cli": "^4.0.409"
+    "@remotion/cli": "4.0.410",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.410",
+    "@remotion/tailwind-v4": "4.0.410",
+    "tailwindcss": "4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.10",
-    "@types/react": "^19.2.9",
-    "typescript": "^5.9.3"
-  }
+    "@remotion/eslint-config-flat": "4.0.410",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.6.0",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }

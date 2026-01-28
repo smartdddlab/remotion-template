@@ -5,6 +5,7 @@ node_modules/
 output/
 out/
 dist/
+.worktee
 
 # OS files
 .DS_Store
