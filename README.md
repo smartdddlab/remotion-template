@@ -5,7 +5,7 @@
 ### 1. 克隆项目并初始化
 ```bash
 # 克隆项目
-git clone https://github.com/yourusername/remotion-template.git my-video-project
+git clone https://github.com/yourusername/remotion-template.git my-video
 cd my-video
 
 # 安装依赖
