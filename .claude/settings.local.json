@@ -1,0 +1,4 @@
+{
+  "enabledMcpjsonServers": ["remotion-documentation", "minimax-mcp-js"],
+  "enableAllProjectMcpServers": true
+}

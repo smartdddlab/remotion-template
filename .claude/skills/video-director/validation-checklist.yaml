@@ -126,6 +126,8 @@ validation_framework:
         reason: "确保所有设计决策正确传递，防止断裂"
       - "V1: 风格定义完整性"
         reason: "风格是所有视觉决策的基础"
+      - "N5: 内容保真度验证"
+        reason: "内容准确性是视频信息传递的核心基础"
 
   # ============================================
   # 四大验证维度（修订权重）
@@ -235,7 +237,26 @@ validation_framework:
             - "BGM跨场景连续或合理变化"
             - "音频变化有叙事目的"
 
-          fail_action: "调整音频参数或转场设计"
+                    fail_action: "调整音频参数或转场设计"
+
+        - check_id: "A6"
+          name: "音频文案对齐验证"
+          method: "对比音频脚本与scene_content，验证文本内容、分段、强调点的一致性"
+
+          adversarial_questions:
+            - question: "音频是否遗漏了关键词汇或短语？"
+              consideration: "检查scene_content中的核心术语是否在音频中出现"
+            - question: "分段是否与内容逻辑一致？"
+              consideration: "音频段落划分是否匹配scene_content的信息结构"
+            - question: "语调强调是否与内容重要性匹配？"
+              consideration: "重要内容是否有音频强调（语气、停顿、语速变化）"
+
+          pass_criteria:
+            - "音频脚本与scene_content内容一致"
+            - "分段合理，匹配信息逻辑"
+            - "强调点与内容重要性匹配"
+
+          fail_action: "调整音频脚本或scene_content以保持一致"
 
     # ============================================
     # 维度2：视觉 (Visual)
@@ -339,7 +360,26 @@ validation_framework:
             - "参数与style_definition一致"
             - "图像数量可控"
 
-          fail_action: "补充Baoyu映射或简化图像需求"
+                    fail_action: "补充Baoyu映射或简化图像需求"
+
+        - check_id: "V6"
+          name: "视觉服务内容验证"
+          method: "分析visual_direction，验证视觉元素是否直接解释和支持对应的内容点"
+
+          adversarial_questions:
+            - question: "视觉效果是否直接解释内容？还是只是装饰？"
+              consideration: "检查每个视觉元素是否有明确的内容解释功能"
+            - question: "视觉隐喻是否容易理解？"
+              consideration: "避免过于抽象或文化特定的隐喻导致理解困难"
+            - question: "是否有视觉信息过载或不足？"
+              consideration: "关键内容点是否有足够的视觉支持，次要内容是否视觉过于复杂"
+
+          pass_criteria:
+            - "每个关键内容点都有对应的视觉解释"
+            - "视觉元素服务于内容理解而非单纯装饰"
+            - "视觉复杂度与内容重要性匹配"
+
+          fail_action: "调整visual_direction以确保视觉服务内容，或简化/增强视觉解释"
 
     # ============================================
     # 维度3：叙事 (Narrative) - 权重降低
@@ -425,7 +465,26 @@ validation_framework:
             - "转场类型与风格一致"
             - "转场数量适中，不喧宾夺主"
 
-          fail_action: "简化或统一转场方案"
+                    fail_action: "简化或统一转场方案"
+
+        - check_id: "N5"
+          name: "内容保真度验证"
+          method: "对比scene_content与原始输入材料，验证关键信息点、核心概念、数据、结论的完整性和准确性"
+
+          adversarial_questions:
+            - question: "是否有信息被简化到失去原意？"
+              consideration: "检查专业术语、复杂概念是否被正确解释而非过度简化"
+            - question: "是否有数据被遗漏或错误表示？"
+              consideration: "验证数值、百分比、统计数据的准确性和上下文完整性"
+            - question: "核心结论是否被完整保留？"
+              consideration: "确保最终takeaway与原始材料一致，无偏差"
+
+          pass_criteria:
+            - "所有关键信息点完整保留"
+            - "无实质性曲解或错误解释"
+            - "专业术语使用准确或提供恰当解释"
+
+          fail_action: "修订scene_content以准确反映原文，或添加注释说明简化理由"
 
     # ============================================
     # 维度4：技术 (Technical)
@@ -533,17 +592,20 @@ validation_framework:
       A3: minor       # 背景音乐兼容性
       A4: minor       # 音效设计合理性
       A5: minor       # 场景间音频过渡
+      A6: major       # 音频文案对齐验证
       # 视觉维度
       V1: critical     # 风格定义完整性
       V2: major       # 色彩策略一致性
       V3: major       # 场景视觉连贯性
       V4: minor       # 排版可读性
       V5: major       # Baoyu-skills映射
+      V6: major       # 视觉服务内容验证
       # 叙事维度
       N1: major       # 叙事结构完整性
       N2: minor       # 情感曲线连贯性
       N3: minor       # 信息密度合理性
       N4: minor       # 转场逻辑连贯性
+      N5: critical     # 内容保真度验证
       # 技术维度
       T1: major       # 时长规范符合性
       T2: minor       # 技术规格正确性

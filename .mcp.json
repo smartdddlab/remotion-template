@@ -9,7 +9,7 @@
       "args": ["-y", "minimax-mcp-js"],
       "env": {
         "MINIMAX_API_HOST": "https://api.minimaxi.com",
-        "MINIMAX_API_KEY": "",
+        "MINIMAX_API_KEY": "sk-api-rvCJEtrhGj1t3RkuE3n2tZe1-kvCM_LRZqV23FjsfsBca6IrABhD5U4MoZypJonEyXPd0g7QTGJAfsuvORG5gtyzLSTrjkVGPnM2vP-x-1yUExdER83Bgqw",
         "MINIMAX_MCP_BASE_PATH": "./public",
         "MINIMAX_RESOURCE_MODE": "local"
       },
