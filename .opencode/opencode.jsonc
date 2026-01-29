@@ -8,7 +8,7 @@
     },
     "minimax-mcp": {
       "type": "local",
-      "command": ["npx", "-y", "minimax-mcp-js"],
+      "command": ["uvx", "minimax-mcp"],
       "environment": {
         "MINIMAX_API_KEY": "",
         "MINIMAX_MCP_BASE_PATH": "./public",

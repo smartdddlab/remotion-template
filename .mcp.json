@@ -5,8 +5,8 @@
       "args": ["@remotion/mcp@latest"]
     },
     "minimax-mcp": {
-      "command": "npx",
-      "args": ["-y", "minimax-mcp-js"],
+      "command": "uvx",
+      "args": ["minimax-mcp"],
       "env": {
         "MINIMAX_API_HOST": "https://api.minimaxi.com",
         "MINIMAX_API_KEY": "",
