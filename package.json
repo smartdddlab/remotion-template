@@ -18,6 +18,8 @@
     "@remotion/eslint-config-flat": "4.0.410",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
     "eslint": "9.19.0",
     "prettier": "3.6.0",
     "typescript": "5.9.3"
@@ -25,7 +27,7 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
-    "render": "remotion render src/index.tsx 跳跳糖-中国风 --output ./output/video.mp4 --frames 0-3149",
+    "render": "remotion render src/index.tsx",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },

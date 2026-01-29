@@ -20,6 +20,9 @@
 5. **使用 TODO**：确保任务清晰、可追踪
 
 ### baoyu-skills 风格匹配
+
+baoyu-danger-gemini-web :与 Gemini Web 交互，生成文本和图片,没有图像生成 API key使用此方案
+
 | visual_aesthetic | 推荐技能 | 推荐风格 |
 |-----------------|---------|---------|
 | illustrative with tech elements | baoyu-article-illustrator | tech/editorial/blueprint |
@@ -28,6 +31,7 @@
 | professional corporate | baoyu-infographic | corporate/clean/bold-graphic |
 | educational tutorial | baoyu-article-illustrator | chalkboard/sketch-notes/warm |
 | magazine editorial | baoyu-infographic | editorial-infographic/bold-graphic |
+| | 使用 TODO、可追踪* |
 
 ### Remotion 能力使用
 **必须使用**：Canvas粒子系统、Three.js 3D、Lottie动画、SVG动画、复杂interpolate组合
@@ -137,6 +141,8 @@ MiniMax-mcp_text_to_audio(
 | 相对帧数错误 | 后继场景不可见、嵌套动画无效 | 使用 `const relativeFrame = frame - from;` |
 | interpolate溢出 | 动画跳变、NaN | 确保范围在 `[0, duration]` 内 |
 | 音频参数不一致 | 语调情感不连贯 | 统一使用 `emotion=neutral, speed=1.0` |
+| 没有图像生成 API key
+ | 无法生成图片 | 使用 baoyu-danger-gemini-web :与 Gemini Web 交互，生成文本和图片 |
 
 ---
 

@@ -5,6 +5,7 @@ node_modules/
 output/
 out/
 dist/
+cover-image
 .worktee
 
 # OS files
