@@ -5,8 +5,7 @@
 ### 1. 克隆项目并初始化
 ```bash
 # 克隆项目
-git clone https://github.com/smartdddlab/remotion-template my-video
-cd my-video
+git clone https://github.com/smartdddlab/remotion-template my-video && cd my-video
 
 # 安装依赖
 pnpm i
