@@ -2,14 +2,12 @@
 
 ## 快速开始
 
-### 1. 克隆项目并初始化
+### 1. 克隆项目并安装
 ```bash
 # 克隆项目
-git clone https://github.com/smartdddlab/remotion-template my-video && cd my-video
-
-# 安装依赖
-pnpm i
+git clone https://github.com/smartdddlab/remotion-template my-video --depth=1 && cd my-video && pnpm i
 ```
+**注意**:如果没有 pnpm ，请使用`npm install` 进行安装
 
 ### 2. 配置 MiniMax API Key
 项目已预置 MCP 配置，只需替换 API Key：

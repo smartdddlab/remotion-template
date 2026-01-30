@@ -11,6 +11,43 @@ description: 专业视频制作框架，将脚本转化为结构化生产计划�
 
 **核心原则：** 通用动画词汇专注于 **WHAT**（创意愿景）而非 **HOW**（实现）。
 
+## 强制工作流
+
+**使用此 skill 时必须：**
+1. **立即创建 TodoWrite 任务**（不可跳过）
+2. **按顺序执行验证步骤**
+3. **生成 validation-report.yaml**
+4. **置信度 < 85% 时阻断并继续修订**
+
+```typescript
+// ✅ 正确调用方式
+Skill("video-director")
+→ 自动创建 TodoWrite 任务
+→ 执行 6 步验证流程
+→ 生成 validation-report.yaml
+→ 置信度 ≥ 85% 方可进入下一阶段
+
+// ❌ 错误调用方式
+Skill("video-director")
+→ 直接生成 plan.yaml (跳过验证)
+```
+
+## 验证流程（强制执行）
+
+```yaml
+验证步骤（必须按顺序执行）:
+1. TodoWrite: 创建验证任务清单 ✅
+2. 生成 plan.yaml 初稿
+3. TodoWrite: 执行第一轮完整性质疑 ✅
+4. 修订 FAIL 项
+5. TodoWrite: 执行第二轮可行性质疑（4+场景） ✅
+6. 修订高风险项
+7. TodoWrite: 执行第三轮严谨性质疑（8+场景） ✅
+8. 计算置信度 → 必须 ≥ 85%
+9. 生成 validation-report.yaml
+10. 输出最终 plan.yaml
+```
+
 ## 何时使用
 
 ### ✅ 适用场景
@@ -95,7 +132,29 @@ style_definition:
 
 ## 对抗式验证系统 (v6.0+)
 
-**强制约束：** 生成plan.yaml后，必须执行对抗式自检，未完成验证的文件视为不合格。
+**强制约束：**
+- ✅ 生成 plan.yaml **后**，**必须立即**执行 TodoWrite 验证任务
+- ✅ 验证流程不可跳过，任何跳过都会导致 plan.yaml 视为**不合格**
+- ✅ 置信度 < 85% 时，**阻断**进入下一阶段
+- ✅ 必须生成 `validation-report.yaml` 记录完整验证过程
+
+### 验证流程
+
+```yaml
+强制执行步骤：
+1. TodoWrite("执行对抗式验证", status: "in_progress")
+2. 确定验证级别（simple/standard/complex）
+3. TodoWrite("第一轮完整性质疑", status: "in_progress")
+4. 执行分级对抗验证（1-3轮）
+5. 修订所有 FAIL 项并记录
+6. TodoWrite("计算置信度", status: "in_progress")
+7. 计算置信度（必须 ≥ 85%）
+8. TodoWrite("生成验证报告", status: "in_progress")
+9. 输出 validation-report.yaml
+10. TodoWrite("验证完成", status: "completed")
+```
+
+**未完成验证就输出 plan.yaml = 违反工作流 = 不合格**
 
 ### 验证流程
 

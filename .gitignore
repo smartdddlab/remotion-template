@@ -39,3 +39,5 @@ public
 ## AI cache
 .serena
 data
+.mcp.json
+.opencode/opencode.jsonc
